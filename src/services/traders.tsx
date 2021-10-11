@@ -1,5 +1,5 @@
-import { KYCStatus } from "../models/kyc";
-import { Trader } from "../models/trader";
+import { KYCStatus } from "models/kyc";
+import { Trader } from "models/trader";
 const data = [
   {
     id: "1",
