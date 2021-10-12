@@ -1,19 +1,39 @@
-import React from "react";
-import { Trader } from "../../models/trader";
+import { Trader, TraderStatus } from "models/trader";
 import {
   DataGrid,
   GridColDef,
   GridRowParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
-import { KYCStatusBadge } from "./KYCStatusBadge";
-import { KYCStatus } from "models/kyc";
+import { TraderStatusBadge } from "./TraderStatusBadge";
 import { useHistory } from "react-router-dom";
 
 const columns: GridColDef[] = [
-  { field: "marketplace", headerName: "Marketplace", width: 130 },
-  { field: "username", headerName: "Username", minWidth: 130, flex: 1 },
-  { field: "email", headerName: "Email", width: 130 },
+  {
+    field: "marketplace",
+    headerName: "Marketplace",
+    width: 130,
+    sortable: false,
+    filterable: false,
+    resizable: false,
+  },
+  {
+    field: "username",
+    headerName: "Username",
+    minWidth: 130,
+    flex: 1,
+    sortable: false,
+    filterable: false,
+    resizable: false,
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 130,
+    sortable: false,
+    filterable: false,
+    resizable: false,
+  },
   {
     field: "dateJoined",
     headerName: "Date Joined",
@@ -26,10 +46,15 @@ const columns: GridColDef[] = [
     field: "status",
     headerName: "Status",
     width: 130,
+    sortable: false,
+    filterable: false,
+    resizable: false,
     renderCell: (params: GridValueGetterParams) =>
       params.value && (
-        <KYCStatusBadge
-          status={KYCStatus[params.value.toString() as keyof typeof KYCStatus]}
+        <TraderStatusBadge
+          status={
+            TraderStatus[params.value.toString() as keyof typeof TraderStatus]
+          }
         />
       ),
   },

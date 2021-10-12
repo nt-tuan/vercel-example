@@ -1,10 +1,10 @@
 import {
   getTrader,
   getTraderContact,
-  getTraderKYCResult,
+  getTraderVerifyingResult,
   getTraders,
-} from "./traders";
-import { KYCStatus } from "models/kyc";
+} from "./trader";
+import { TraderStatus } from "models/trader";
 test("getTraders should work", () => {
   expect(getTraders()).resolves.toStrictEqual([
     {
@@ -13,7 +13,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
     {
       id: "2",
@@ -21,7 +21,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
     {
       id: "3",
@@ -29,7 +29,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
     {
       id: "4",
@@ -37,7 +37,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
     {
       id: "5",
@@ -45,7 +45,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
     {
       id: "6",
@@ -53,7 +53,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
     {
       id: "7",
@@ -61,7 +61,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
     },
   ]);
 });
@@ -73,7 +73,7 @@ test("getTrader should work", () => {
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   });
 });
 
@@ -89,13 +89,13 @@ test("getTraderContact should work", () => {
 });
 
 test("getTraderKYCResult should work", () => {
-  expect(getTraderKYCResult()).resolves.toStrictEqual([
+  expect(getTraderVerifyingResult()).resolves.toStrictEqual([
     {
       id: "1",
       date: "2021-1-1-2",
       type: "string",
       provider: "Raputel",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
       message: "My message",
     },
   ]);

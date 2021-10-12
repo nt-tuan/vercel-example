@@ -1,25 +1,19 @@
 import {
   AppBar,
+  Box,
   Breadcrumbs,
   BreadcrumbsProps,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React from "react";
-import { styled } from "@mui/system";
-
 interface Props {
   children: React.ReactNode;
 }
-const Content = styled("div")({
-  marginTop: "24px",
-});
-const LayoutContainer = styled("div")({
-  backgroundColor: "#FAFAFA",
-});
+
 export const AdminLayout = (props: Props) => {
   return (
-    <LayoutContainer>
+    <Box sx={{ backgroundColor: "#fafafa", minHeight: "100%" }}>
       <AppBar position="static">
         <Toolbar>
           {/* <IconButton
@@ -36,8 +30,10 @@ export const AdminLayout = (props: Props) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Content>{props.children}</Content>
-    </LayoutContainer>
+      <Box sx={{ marginTop: "24px", marginLeft: "20px", marginRight: "20px" }}>
+        {props.children}
+      </Box>
+    </Box>
   );
 };
 
@@ -49,14 +45,14 @@ AdminLayout.Header = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const BreadcrumbsContainer = styled("div")({
-  marginTop: 8,
-  marginBottom: 24,
-});
 AdminLayout.Breadcrumbs = (props: BreadcrumbsProps) => {
   return (
-    <BreadcrumbsContainer>
+    <Box sx={{ marginTop: "8px", marginBottom: "24px" }}>
       <Breadcrumbs {...props} />
-    </BreadcrumbsContainer>
+    </Box>
   );
+};
+
+AdminLayout.Content = ({ children }: { children: React.ReactNode }) => {
+  return <Box sx={{ marginTop: "24px" }}>{children}</Box>;
 };

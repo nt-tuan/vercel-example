@@ -1,5 +1,4 @@
-import { KYCStatus } from "models/kyc";
-import { Trader } from "models/trader";
+import { Trader, TraderStatus } from "models/trader";
 const data = [
   {
     id: "1",
@@ -7,7 +6,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
   {
     id: "2",
@@ -15,7 +14,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
   {
     id: "3",
@@ -23,7 +22,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
   {
     id: "4",
@@ -31,7 +30,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
   {
     id: "5",
@@ -39,7 +38,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
   {
     id: "6",
@@ -47,7 +46,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
   {
     id: "7",
@@ -55,7 +54,7 @@ const data = [
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: KYCStatus.PASSED,
+    status: TraderStatus.PASSED,
   },
 ];
 export const getTraders: () => Promise<Trader[]> = async () => {
@@ -77,14 +76,14 @@ export const getTraderContact = async (id: string) => {
   };
 };
 
-export const getTraderKYCResult = async (id: string) => {
+export const getTraderVerifyingResult = async (id: string) => {
   return [
     {
       id: "1",
       date: "2021-1-1-2",
       type: "string",
       provider: "Raputel",
-      status: KYCStatus.PASSED,
+      status: TraderStatus.PASSED,
       message: "My message",
     },
   ];
