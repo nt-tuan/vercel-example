@@ -50,8 +50,9 @@ exports[`TraderList should render 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Marketplace
                     </div>
@@ -63,7 +64,8 @@ exports[`TraderList should render 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -89,8 +91,9 @@ exports[`TraderList should render 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Username
                     </div>
@@ -102,7 +105,8 @@ exports[`TraderList should render 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -128,8 +132,9 @@ exports[`TraderList should render 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Email
                     </div>
@@ -141,7 +146,8 @@ exports[`TraderList should render 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >

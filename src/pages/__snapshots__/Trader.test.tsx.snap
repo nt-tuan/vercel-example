@@ -194,7 +194,7 @@ exports[`Trader should render correctly 1`] = `
             >
               <div
                 aria-colindex="1"
-                class="MuiDataGrid-columnHeader--sortable MuiDataGrid-columnHeader"
+                class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                 data-field="date"
                 role="columnheader"
                 style="width: 100px; min-width: 100px; max-width: 100px;"
@@ -208,8 +208,9 @@ exports[`Trader should render correctly 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Date
                     </div>
@@ -218,27 +219,24 @@ exports[`Trader should render correctly 1`] = `
                     >
                       <button
                         aria-label="Sort"
-                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
                         tabindex="-1"
                         title="Sort"
                         type="button"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-ptiqhd-MuiSvgIcon-root"
+                          data-testid="ArrowUpwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="MuiSvgIcon-root MuiDataGrid-sortIcon MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
-                            />
-                          </svg>
-                        </span>
+                          <path
+                            d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+                          />
+                        </svg>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                         />
                       </button>
                     </div>
@@ -250,7 +248,8 @@ exports[`Trader should render correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -262,7 +261,7 @@ exports[`Trader should render correctly 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                class="MuiDataGrid-columnHeader--sortable MuiDataGrid-columnHeader"
+                class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                 data-field="type"
                 role="columnheader"
                 style="width: 100px; min-width: 100px; max-width: 100px;"
@@ -276,8 +275,9 @@ exports[`Trader should render correctly 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Type
                     </div>
@@ -286,27 +286,24 @@ exports[`Trader should render correctly 1`] = `
                     >
                       <button
                         aria-label="Sort"
-                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
                         tabindex="-1"
                         title="Sort"
                         type="button"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-ptiqhd-MuiSvgIcon-root"
+                          data-testid="ArrowUpwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="MuiSvgIcon-root MuiDataGrid-sortIcon MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
-                            />
-                          </svg>
-                        </span>
+                          <path
+                            d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+                          />
+                        </svg>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                         />
                       </button>
                     </div>
@@ -318,7 +315,8 @@ exports[`Trader should render correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -330,7 +328,7 @@ exports[`Trader should render correctly 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                class="MuiDataGrid-columnHeader--sortable MuiDataGrid-columnHeader"
+                class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                 data-field="provider"
                 role="columnheader"
                 style="width: 50px; min-width: 50px; max-width: 50px;"
@@ -344,8 +342,9 @@ exports[`Trader should render correctly 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                        Provider
                     </div>
@@ -354,27 +353,24 @@ exports[`Trader should render correctly 1`] = `
                     >
                       <button
                         aria-label="Sort"
-                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
                         tabindex="-1"
                         title="Sort"
                         type="button"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-ptiqhd-MuiSvgIcon-root"
+                          data-testid="ArrowUpwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="MuiSvgIcon-root MuiDataGrid-sortIcon MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
-                            />
-                          </svg>
-                        </span>
+                          <path
+                            d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+                          />
+                        </svg>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                         />
                       </button>
                     </div>
@@ -386,7 +382,8 @@ exports[`Trader should render correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -398,7 +395,7 @@ exports[`Trader should render correctly 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                class="MuiDataGrid-columnHeader--sortable MuiDataGrid-columnHeader"
+                class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                 data-field="status"
                 role="columnheader"
                 style="width: 130px; min-width: 130px; max-width: 130px;"
@@ -412,8 +409,9 @@ exports[`Trader should render correctly 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Status
                     </div>
@@ -422,27 +420,24 @@ exports[`Trader should render correctly 1`] = `
                     >
                       <button
                         aria-label="Sort"
-                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
                         tabindex="-1"
                         title="Sort"
                         type="button"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-ptiqhd-MuiSvgIcon-root"
+                          data-testid="ArrowUpwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="MuiSvgIcon-root MuiDataGrid-sortIcon MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
-                            />
-                          </svg>
-                        </span>
+                          <path
+                            d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+                          />
+                        </svg>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                         />
                       </button>
                     </div>
@@ -454,7 +449,8 @@ exports[`Trader should render correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -466,7 +462,7 @@ exports[`Trader should render correctly 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                class="MuiDataGrid-columnHeader--sortable MuiDataGrid-columnHeader"
+                class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                 data-field="action"
                 role="columnheader"
                 style="width: 100px; min-width: 100px; max-width: 100px;"
@@ -480,8 +476,9 @@ exports[`Trader should render correctly 1`] = `
                     class="MuiDataGrid-columnHeaderTitleContainer"
                   >
                     <div
+                      aria-label=""
                       class="MuiDataGrid-columnHeaderTitle"
-                      title=""
+                      data-mui-internal-clone-element="true"
                     >
                       Action
                     </div>
@@ -490,27 +487,24 @@ exports[`Trader should render correctly 1`] = `
                     >
                       <button
                         aria-label="Sort"
-                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
                         tabindex="-1"
                         title="Sort"
                         type="button"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-ptiqhd-MuiSvgIcon-root"
+                          data-testid="ArrowUpwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="MuiSvgIcon-root MuiDataGrid-sortIcon MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
-                            />
-                          </svg>
-                        </span>
+                          <path
+                            d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+                          />
+                        </svg>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                         />
                       </button>
                     </div>
@@ -522,7 +516,8 @@ exports[`Trader should render correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiDataGrid-iconSeparator"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SeparatorIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -616,7 +611,7 @@ exports[`Trader should render correctly 1`] = `
                         </div>
                         <div
                           aria-colindex="4"
-                          class="MuiDataGrid-cell MuiDataGrid-cell--withRenderer MuiDataGrid-cell--textLeft"
+                          class="MuiDataGrid-cell--withRenderer MuiDataGrid-cell MuiDataGrid-cell--textLeft"
                           data-colindex="3"
                           data-editable="false"
                           data-field="status"
@@ -640,7 +635,7 @@ exports[`Trader should render correctly 1`] = `
                         </div>
                         <div
                           aria-colindex="5"
-                          class="MuiDataGrid-cell MuiDataGrid-cell--withRenderer MuiDataGrid-cell--textLeft"
+                          class="MuiDataGrid-cell--withRenderer MuiDataGrid-cell MuiDataGrid-cell--textLeft"
                           data-colindex="4"
                           data-editable="false"
                           data-field="action"
@@ -652,28 +647,24 @@ exports[`Trader should render correctly 1`] = `
                           tabindex="-1"
                         >
                           <button
-                            class="MuiButtonBase-root MuiIconButton-root"
+                            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
                             tabindex="0"
                             title="View message"
                             type="button"
                           >
-                            <span
-                              class="MuiIconButton-label"
+                            <svg
+                              aria-hidden="true"
+                              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                              data-testid="VisibilityIcon"
+                              focusable="false"
+                              viewBox="0 0 24 24"
                             >
-                              <svg
-                                aria-hidden="true"
-                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                                data-testid="VisibilityIcon"
-                                focusable="false"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                                />
-                              </svg>
-                            </span>
+                              <path
+                                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                              />
+                            </svg>
                             <span
-                              class="MuiTouchRipple-root"
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                             />
                           </button>
                         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { TraderVerifyingResult as Model, TraderStatus } from "models/trader";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { TraderStatusBadge } from "./TraderStatusBadge";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
