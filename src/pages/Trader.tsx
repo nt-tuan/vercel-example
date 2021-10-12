@@ -28,7 +28,6 @@ const Trader = () => {
   }, [id]);
   return (
     <>
-      {id}
       <AdminLayout.Header>
         {trader?.marketplace ?? <Skeleton variant="text" />} |{" "}
         {contact?.companyName ?? <Skeleton variant="text" />}

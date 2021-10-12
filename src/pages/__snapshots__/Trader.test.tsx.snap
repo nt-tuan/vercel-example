@@ -2,7 +2,6 @@
 
 exports[`Trader should render correctly 1`] = `
 <div>
-  1
   <h2
     class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
   >
