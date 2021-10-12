@@ -1,15 +1,15 @@
 import React from "react";
-import { KYCResult as Model, KYCStatus } from "models/kyc";
+import { TraderVerifyingResult as Model, TraderStatus } from "models/trader";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { KYCStatusBadge } from "./KYCStatusBadge";
+import { TraderStatusBadge } from "./TraderStatusBadge";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 interface Props {
   data?: Model[];
 }
 
-export const KYCResult = ({ data }: Props) => {
+export const TraderVerifyingTable = ({ data }: Props) => {
   const [message, setMessage] = React.useState<string>();
   const handleRowClick = () => {};
   const viewMessage = (message?: string) => {
@@ -38,7 +38,7 @@ export const KYCResult = ({ data }: Props) => {
       headerName: "Status",
       width: 130,
       renderCell: (params: GridValueGetterParams) => (
-        <KYCStatusBadge status={params.value as KYCStatus} />
+        <TraderStatusBadge status={params.value as TraderStatus} />
       ),
     },
     {
@@ -46,7 +46,10 @@ export const KYCResult = ({ data }: Props) => {
       headerName: "Action",
       renderCell: (params: GridValueGetterParams) => {
         return (
-          <IconButton onClick={() => viewMessage(params.row.message)}>
+          <IconButton
+            title="View message"
+            onClick={() => viewMessage(params.row.message)}
+          >
             <VisibilityIcon />
           </IconButton>
         );
@@ -58,6 +61,7 @@ export const KYCResult = ({ data }: Props) => {
       <DataGrid
         rows={data ?? []}
         columns={columns}
+        columnBuffer={columns.length}
         loading={data == null}
         hideFooter
         disableColumnMenu

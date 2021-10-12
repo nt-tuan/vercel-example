@@ -1,25 +1,16 @@
-import React from "react";
-import Container from "@mui/material/Container";
 import { AdminLayout } from "layouts/AdminLayout";
-import TraderListPage from "./pages/TraderList";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import TraderPage from "pages/Trader";
-
+import { AppRouter } from "./AppRouter";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 export default function App() {
   return (
-    <AdminLayout>
-      <Container maxWidth="lg">
-        <BrowserRouter>
-          <Switch>
-            <Route path="/trader/:id">
-              <TraderPage />
-            </Route>
-            <Route path={["/", "/trader"]}>
-              <TraderListPage />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      </Container>
-    </AdminLayout>
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <AdminLayout>
+        <AppRouter />
+      </AdminLayout>
+    </ThemeProvider>
   );
 }

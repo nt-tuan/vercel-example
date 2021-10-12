@@ -1,35 +1,30 @@
 import React from "react";
 import { TraderContact } from "components/trader/TraderContact";
 import { TraderContact as Model, Trader as TraderModel } from "models/trader";
-import { KYCResult as KYCResultModel } from "models/kyc";
+import { TraderVerifyingResult } from "models/trader";
 import { useParams } from "react-router";
 import {
   getTraderContact,
-  getTraderKYCResult,
+  getTraderVerifyingResult,
   getTrader,
-} from "services/traders";
-import { KYCResult } from "components/trader/KYCResult";
-import { styled } from "@mui/system";
+} from "services/trader";
+import { TraderVerifyingTable } from "components/trader/TraderVerifyingTable";
 import { AdminLayout } from "layouts/AdminLayout";
-import { Skeleton, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
 interface PageParams {
   id: string;
 }
 
-const KYCTableSection = styled("div")({
-  marginTop: 24,
-});
-
-const TraderPage = () => {
+const Trader = () => {
   const [contact, setContact] = React.useState<Model>();
-  const [kycResult, setKYCResult] = React.useState<KYCResultModel[]>();
+  const [kycResult, setKYCResult] = React.useState<TraderVerifyingResult[]>();
   const [trader, setTrader] = React.useState<TraderModel>();
   const { id } = useParams<PageParams>();
   React.useEffect(() => {
     getTrader(id).then(setTrader);
     getTraderContact(id).then(setContact);
-    getTraderKYCResult(id).then(setKYCResult);
+    getTraderVerifyingResult(id).then(setKYCResult);
   }, [id]);
   return (
     <>
@@ -37,18 +32,20 @@ const TraderPage = () => {
         {trader?.marketplace ?? <Skeleton variant="text" />} |{" "}
         {contact?.companyName ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
-      <AdminLayout.Breadcrumbs aria-label="breadcrumb">
-        <WrappedLink color="inherit" underline="hover" href="/">
-          Trader
-        </WrappedLink>
-        <Typography fontWeight="light">Trader Details</Typography>
-      </AdminLayout.Breadcrumbs>
-      <TraderContact contact={contact} />
-      <KYCTableSection>
-        <KYCResult data={kycResult} />
-      </KYCTableSection>
+      <AdminLayout.Content>
+        <AdminLayout.Breadcrumbs aria-label="breadcrumb">
+          <WrappedLink color="inherit" underline="hover" href="/">
+            Trader
+          </WrappedLink>
+          <Typography fontWeight="light">Trader Details</Typography>
+        </AdminLayout.Breadcrumbs>
+        <TraderContact contact={contact} />
+        <Box sx={{ marginTop: "24px" }}>
+          <TraderVerifyingTable data={kycResult} />
+        </Box>
+      </AdminLayout.Content>
     </>
   );
 };
 
-export default TraderPage;
+export default Trader;

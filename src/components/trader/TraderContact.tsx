@@ -7,10 +7,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { TraderContact as Model } from "models/trader";
+import { TraderContact as Model, TraderStatus } from "models/trader";
 import { styled } from "@mui/system";
-import { KYCStatusBadge } from "./KYCStatusBadge";
-import { KYCStatus } from "models/kyc";
+import { TraderStatusBadge } from "./TraderStatusBadge";
 
 const Flex = styled("div")({
   width: "100%",
@@ -41,14 +40,14 @@ const WrappedItem = ({
 
 interface Props {
   contact?: Model;
-  status?: KYCStatus;
+  status?: TraderStatus;
 }
 
 export const TraderContact = ({ contact }: Props) => {
   if (contact == null)
     return <Skeleton variant="rectangular" width={500} height={300} />;
   return (
-    <Card style={{ maxWidth: "500px" }}>
+    <Card sx={{ maxWidth: "500px" }} variant="outlined">
       <CardContent>
         <Typography fontWeight="bold">Contact Details</Typography>
         <List>
@@ -59,8 +58,8 @@ export const TraderContact = ({ contact }: Props) => {
               <div>
                 <div>{contact.email}</div>
                 {contact.emailVerified && (
-                  <KYCStatusBadge
-                    status={KYCStatus.EMAIL_VERIFIED}
+                  <TraderStatusBadge
+                    status={TraderStatus.EMAIL_VERIFIED}
                     size="small"
                   />
                 )}
