@@ -83,7 +83,7 @@ export const getTraderVerifyingResult = async (id: string) => {
       date: "2021-1-1-2",
       type: "string",
       provider: "Raputel",
-      status: TraderStatus.PASSED,
+      status: TraderStatus.PENDING_EMAIL,
       message: "My message",
     },
   ];

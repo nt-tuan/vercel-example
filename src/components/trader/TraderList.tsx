@@ -45,7 +45,7 @@ const columns: GridColDef[] = [
   {
     field: "status",
     headerName: "Status",
-    width: 130,
+    width: 180,
     sortable: false,
     filterable: false,
     resizable: false,

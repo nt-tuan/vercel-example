@@ -32,13 +32,13 @@ const Trader = () => {
         {trader?.marketplace ?? <Skeleton variant="text" />} |{" "}
         {contact?.companyName ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
+      <AdminLayout.Breadcrumbs aria-label="breadcrumb">
+        <WrappedLink color="inherit" underline="hover" href="/">
+          Trader
+        </WrappedLink>
+        <Typography fontWeight="light">Trader Details</Typography>
+      </AdminLayout.Breadcrumbs>
       <AdminLayout.Content>
-        <AdminLayout.Breadcrumbs aria-label="breadcrumb">
-          <WrappedLink color="inherit" underline="hover" href="/">
-            Trader
-          </WrappedLink>
-          <Typography fontWeight="light">Trader Details</Typography>
-        </AdminLayout.Breadcrumbs>
         <TraderContact contact={contact} />
         <Box sx={{ marginTop: "24px" }}>
           <TraderVerifyingTable data={kycResult} />

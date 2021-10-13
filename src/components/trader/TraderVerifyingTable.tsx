@@ -23,20 +23,33 @@ export const TraderVerifyingTable = ({ data }: Props) => {
     {
       field: "date",
       headerName: "Date",
+      sortable: false,
+      filterable: false,
+      resizable: false,
     },
     {
       field: "type",
       headerName: "Type",
+      sortable: false,
+      filterable: false,
+      resizable: false,
     },
     {
       field: "provider",
       headerName: " Provider",
+      minWidth: 130,
       flex: 1,
+      sortable: false,
+      filterable: false,
+      resizable: false,
     },
     {
       field: "status",
       headerName: "Status",
-      width: 130,
+      width: 180,
+      sortable: false,
+      filterable: false,
+      resizable: false,
       renderCell: (params: GridValueGetterParams) => (
         <TraderStatusBadge status={params.value as TraderStatus} />
       ),
@@ -44,6 +57,9 @@ export const TraderVerifyingTable = ({ data }: Props) => {
     {
       field: "action",
       headerName: "Action",
+      sortable: false,
+      filterable: false,
+      resizable: false,
       renderCell: (params: GridValueGetterParams) => {
         return (
           <IconButton

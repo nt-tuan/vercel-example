@@ -39,7 +39,7 @@ export const AdminLayout = (props: Props) => {
 
 AdminLayout.Header = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Typography variant="h5" component="h2">
+    <Typography variant="h4" component="h2">
       {children}
     </Typography>
   );
