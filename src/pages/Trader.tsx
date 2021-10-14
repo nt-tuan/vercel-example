@@ -1,7 +1,10 @@
 import React from "react";
 import { TraderContact } from "components/trader/TraderContact";
-import { TraderContact as Model, Trader as TraderModel } from "models/trader";
-import { TraderVerifyingResult } from "models/trader";
+import {
+  TraderContact as Model,
+  Trader as TraderModel,
+  TraderVerifyingResult,
+} from "models/trader";
 import { useParams } from "react-router";
 import {
   getTraderContact,
