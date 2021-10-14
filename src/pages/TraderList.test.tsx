@@ -16,7 +16,7 @@ test("TraderList should render", async () => {
   ];
   let containerElement;
   await act(async () => {
-    const { container } = await render(<TraderList />);
+    const { container } = render(<TraderList />);
     containerElement = container;
   });
   expect(containerElement).toMatchSnapshot();

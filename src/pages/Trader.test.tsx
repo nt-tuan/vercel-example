@@ -44,7 +44,7 @@ test("Trader should render correctly", async () => {
   mockService();
   let containerElement;
   await act(async () => {
-    const { container } = await render(<Trader />);
+    const { container } = render(<Trader />);
     containerElement = container;
   });
   expect(containerElement).toMatchSnapshot();
