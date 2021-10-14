@@ -78,7 +78,7 @@ test("getTrader should work", () => {
 });
 
 test("getTraderContact should work", () => {
-  expect(getTraderContact()).resolves.toStrictEqual({
+  expect(getTraderContact("1")).resolves.toStrictEqual({
     companyName: "AAA",
     phoneNumber: "12312451",
     email: "email@asd.cos",
@@ -89,13 +89,13 @@ test("getTraderContact should work", () => {
 });
 
 test("getTraderKYCResult should work", () => {
-  expect(getTraderVerifyingResult()).resolves.toStrictEqual([
+  expect(getTraderVerifyingResult("1")).resolves.toStrictEqual([
     {
       id: "1",
       date: "2021-1-1-2",
       type: "string",
       provider: "Raputel",
-      status: TraderStatus.PASSED,
+      status: TraderStatus.PENDING_EMAIL,
       message: "My message",
     },
   ]);

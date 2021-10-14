@@ -1,19 +1,17 @@
 import React from "react";
 import { TraderVerifyingResult as Model, TraderStatus } from "models/trader";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { TraderStatusBadge } from "./TraderStatusBadge";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 interface Props {
   data?: Model[];
 }
 
 export const TraderVerifyingTable = ({ data }: Props) => {
   const [message, setMessage] = React.useState<string>();
-  const handleRowClick = () => {};
-  const viewMessage = (message?: string) => {
-    setMessage(message);
+  const viewMessage = (actionMessage?: string) => {
+    setMessage(actionMessage);
   };
   const columns: GridColDef[] = [
     {
@@ -82,7 +80,6 @@ export const TraderVerifyingTable = ({ data }: Props) => {
         hideFooter
         disableColumnMenu
         autoHeight
-        onRowClick={handleRowClick}
       />
       <Dialog
         onClose={() => setMessage(undefined)}
