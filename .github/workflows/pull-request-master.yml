@@ -74,8 +74,8 @@ jobs:
                 .repository("env-core-services")
                 .sourceBranch("main")
                 .outputBranch("main")
-                .sourcePath("services/service-portal/dev-values.yaml")
-                .outputPath("services/service-portal/dev-values.yaml")
-                .set("dcSupportFrontend:image:tag", process.env.GITHUB_SHA)
+                .sourcePath("services/dc-support/dev-values.yaml")
+                .outputPath("services/dc-support/dev-values.yaml")
+                .set("frontend:image:tag", process.env.GITHUB_SHA)
                 .commit("Auto - dcSupportFrontend deployment")
                 .run();
