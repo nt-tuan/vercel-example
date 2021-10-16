@@ -1,15 +1,16 @@
 import React from "react";
 import { Link as MUILink, LinkProps } from "@mui/material";
-import { Link } from "react-router-dom";
-
+import Link from "next/link";
 const MyLink = React.forwardRef(
   (
     { href, className, children }: LinkProps,
     ref: React.Ref<HTMLAnchorElement>
   ) => {
     return (
-      <Link ref={ref} to={href ?? "/"} className={className}>
-        {children}
+      <Link href={href ?? "/"}>
+        <a ref={ref} className={className}>
+          {children}
+        </a>
       </Link>
     );
   }

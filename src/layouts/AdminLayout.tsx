@@ -6,6 +6,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { NextPage } from "next";
 import React from "react";
 interface Props {
   children: React.ReactNode;
@@ -56,3 +57,5 @@ AdminLayout.Breadcrumbs = (props: BreadcrumbsProps) => {
 AdminLayout.Content = ({ children }: { children: React.ReactNode }) => {
   return <Box sx={{ marginTop: "24px" }}>{children}</Box>;
 };
+
+export const getLayout = (page: NextPage) => <AdminLayout>{page}</AdminLayout>;
