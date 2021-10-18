@@ -23,7 +23,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "devDependencies": {
     "identity-obj-proxy": "^3.0.0",
