@@ -6,9 +6,6 @@ import Document, {
   DocumentContext,
 } from "next/document";
 
-import getConfig from "next/config";
-const { publicRuntimeConfig } = getConfig();
-
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);

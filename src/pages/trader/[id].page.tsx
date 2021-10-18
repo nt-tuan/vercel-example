@@ -1,7 +1,10 @@
 import React from "react";
 import { TraderContact } from "components/trader/TraderContact";
-import { TraderContact as Model, Trader as TraderModel } from "models/trader";
-import { TraderVerifyingResult } from "models/trader";
+import {
+  TraderContact as Model,
+  Trader as TraderModel,
+  TraderVerifyingResult,
+} from "models/trader";
 import {
   getTraderContact,
   getTraderVerifyingResult,
@@ -12,9 +15,8 @@ import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
-const Home = () => {
+const Page = () => {
   const [contact, setContact] = React.useState<Model>();
   const [kycResult, setKYCResult] = React.useState<TraderVerifyingResult[]>();
   const [trader, setTrader] = React.useState<TraderModel>();
@@ -52,6 +54,5 @@ const Home = () => {
   );
 };
 
-Home.getLayout = getLayout;
-
-export default Home;
+Page.getLayout = getLayout;
+export default Page;
