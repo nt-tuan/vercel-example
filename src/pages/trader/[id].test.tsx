@@ -1,6 +1,6 @@
 import { render, act } from "@testing-library/react";
 import React from "react";
-import Trader from "./[id]";
+import Trader from "./[id].page";
 import { TraderStatus } from "models/trader";
 import * as traderService from "services/trader";
 import * as mockRouter from "next/router";
