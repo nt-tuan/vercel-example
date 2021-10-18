@@ -2,7 +2,7 @@ import React from "react";
 import { TraderList as TraderTable } from "components/trader/TraderList";
 import { getTraders } from "services/trader";
 import { Trader } from "models/trader";
-import { AdminLayout } from "layouts/AdminLayout";
+import { AdminLayout, getLayout } from "layouts/AdminLayout";
 
 const TraderList = () => {
   const [traders, setTraders] = React.useState<Trader[]>();
@@ -25,5 +25,6 @@ const TraderList = () => {
     </div>
   );
 };
+TraderList.getLayout = getLayout;
 
 export default TraderList;

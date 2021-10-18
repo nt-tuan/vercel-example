@@ -6,8 +6,7 @@ import {
   GridValueGetterParams,
 } from "@mui/x-data-grid";
 import { TraderStatusBadge } from "./TraderStatusBadge";
-import { useHistory } from "react-router-dom";
-
+import { useRouter } from "next/router";
 const columns: GridColDef[] = [
   {
     field: "marketplace",
@@ -61,9 +60,9 @@ const columns: GridColDef[] = [
 ];
 
 export const TraderList = ({ traders }: { traders?: Trader[] }) => {
-  const history = useHistory();
+  const router = useRouter();
   const handleRowClick = (params: GridRowParams) => {
-    history.push({ pathname: "/trader/" + params.row.id });
+    router.push("/trader/" + params.row.id);
   };
   return (
     <DataGrid

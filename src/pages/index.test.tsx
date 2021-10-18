@@ -1,7 +1,7 @@
 import { act, render } from "@testing-library/react";
 import * as traderService from "services/trader";
 import { TraderStatus } from "models/trader";
-import TraderList from "./TraderList";
+import TraderList from "./index.page";
 jest.mock("services/trader");
 test("TraderList should render", async () => {
   traderService.getTraders = async () => [

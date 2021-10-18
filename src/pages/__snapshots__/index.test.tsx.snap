@@ -199,14 +199,9 @@ exports[`TraderList should render 1`] = `
                           aria-colindex="1"
                           class="MuiDataGrid-cell MuiDataGrid-cell--textLeft"
                           data-colindex="0"
-                          data-editable="false"
                           data-field="marketplace"
-                          data-mode="view"
-                          data-rowindex="0"
-                          data-rowselected="false"
-                          data-value="Hotel Supply B2B"
                           role="cell"
-                          style="min-width: 130px; max-width: 130px; line-height: 51px; min-height: 52px; max-height: 52px;"
+                          style="min-width: 130px; max-width: 130px; min-height: 52px; max-height: 52px; line-height: 51px;"
                           tabindex="-1"
                         >
                           Hotel Supply B2B
@@ -215,14 +210,9 @@ exports[`TraderList should render 1`] = `
                           aria-colindex="2"
                           class="MuiDataGrid-cell MuiDataGrid-cell--textLeft"
                           data-colindex="1"
-                          data-editable="false"
                           data-field="username"
-                          data-mode="view"
-                          data-rowindex="0"
-                          data-rowselected="false"
-                          data-value="tuan"
                           role="cell"
-                          style="min-width: 130px; max-width: 130px; line-height: 51px; min-height: 52px; max-height: 52px;"
+                          style="min-width: 130px; max-width: 130px; min-height: 52px; max-height: 52px; line-height: 51px;"
                           tabindex="-1"
                         >
                           tuan
@@ -231,14 +221,9 @@ exports[`TraderList should render 1`] = `
                           aria-colindex="3"
                           class="MuiDataGrid-cell MuiDataGrid-cell--textLeft"
                           data-colindex="2"
-                          data-editable="false"
                           data-field="email"
-                          data-mode="view"
-                          data-rowindex="0"
-                          data-rowselected="false"
-                          data-value="tuan@tuan.tuan  "
                           role="cell"
-                          style="min-width: 130px; max-width: 130px; line-height: 51px; min-height: 52px; max-height: 52px;"
+                          style="min-width: 130px; max-width: 130px; min-height: 52px; max-height: 52px; line-height: 51px;"
                           tabindex="-1"
                         >
                           tuan@tuan.tuan  

@@ -25,4 +25,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# next.js
+/.next/
+/out/
 dc-support-frontend.iml

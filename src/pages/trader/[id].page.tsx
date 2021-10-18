@@ -5,26 +5,26 @@ import {
   Trader as TraderModel,
   TraderVerifyingResult,
 } from "models/trader";
-import { useParams } from "react-router";
 import {
   getTraderContact,
   getTraderVerifyingResult,
   getTrader,
 } from "services/trader";
 import { TraderVerifyingTable } from "components/trader/TraderVerifyingTable";
-import { AdminLayout } from "layouts/AdminLayout";
+import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
-interface PageParams {
-  id: string;
-}
+import { useRouter } from "next/router";
 
-const Trader = () => {
+const Page = () => {
   const [contact, setContact] = React.useState<Model>();
   const [kycResult, setKYCResult] = React.useState<TraderVerifyingResult[]>();
   const [trader, setTrader] = React.useState<TraderModel>();
-  const { id } = useParams<PageParams>();
+  const router = useRouter();
+  const { id } = router.query;
+
   React.useEffect(() => {
+    if (typeof id !== "string") return;
     getTrader(id).then(setTrader);
     getTraderContact(id).then(setContact);
     getTraderVerifyingResult(id).then(setKYCResult);
@@ -36,19 +36,23 @@ const Trader = () => {
         {contact?.companyName ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
       <AdminLayout.Breadcrumbs aria-label="breadcrumb">
-        <WrappedLink color="inherit" underline="hover" href="/">
+        <WrappedLink
+          color="inherit"
+          underline="hover"
+          href="/"
+          fontWeight="bold"
+        >
           Trader
         </WrappedLink>
         <Typography fontWeight="light">Trader Details</Typography>
       </AdminLayout.Breadcrumbs>
-      <AdminLayout.Content>
-        <TraderContact contact={contact} />
-        <Box sx={{ marginTop: "24px" }}>
-          <TraderVerifyingTable data={kycResult} />
-        </Box>
-      </AdminLayout.Content>
+      <TraderContact contact={contact} />
+      <Box sx={{ marginTop: "24px" }}>
+        <TraderVerifyingTable data={kycResult} />
+      </Box>
     </>
   );
 };
 
-export default Trader;
+Page.getLayout = getLayout;
+export default Page;

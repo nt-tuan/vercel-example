@@ -8,7 +8,9 @@ test("TraderContact should work when no contact provided", () => {
 
 test("TraderContact should work", () => {
   const { queryByText } = render(
-    <TraderContact contact={{ companyName: "My Company" }} />
+    <TraderContact
+      contact={{ companyName: "My Company", emailVerified: false }}
+    />
   );
   expect(queryByText("My Company")).toBeInTheDocument();
 });
