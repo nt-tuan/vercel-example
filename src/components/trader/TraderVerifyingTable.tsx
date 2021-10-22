@@ -4,6 +4,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { TraderStatusBadge } from "./TraderStatusBadge";
 import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import { dateTimeColumnFormatter } from "helpers/table";
 interface Props {
   data?: Model[];
 }
@@ -24,6 +25,8 @@ export const TraderVerifyingTable = ({ data }: Props) => {
       sortable: false,
       filterable: false,
       resizable: false,
+      minWidth: 200,
+      valueFormatter: dateTimeColumnFormatter,
     },
     {
       field: "type",

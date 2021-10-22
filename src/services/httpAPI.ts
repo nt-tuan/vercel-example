@@ -1,9 +1,4 @@
-import {
-  InvalidFormatError,
-  UnexpectedError,
-  APIError,
-  getAPIError,
-} from "./apiError";
+import { InvalidFormatError, UnexpectedError, getAPIError } from "./apiError";
 interface ServerError {
   code: string;
 }
