@@ -11,28 +11,6 @@ jest.mock("components/common/WrappedLink/WrappedLink", () => ({
   WrappedLink: () => <a />,
 }));
 const mockService = () => {
-  jest
-    .spyOn(traderService, "getTraderContact")
-    .mockImplementation(async () => ({
-      companyName: "AAA",
-      phoneNumber: "12312451",
-      email: "email@asd.cos",
-      country: "Vietnam",
-      address: "232 Akd ale",
-      emailVerified: true,
-    }));
-  jest
-    .spyOn(traderService, "getTraderVerifyingResult")
-    .mockImplementation(async () => [
-      {
-        id: "1",
-        date: "2021-1-1-2",
-        type: "string",
-        provider: "Raputel",
-        status: TraderStatus.PASSED,
-        message: "My message",
-      },
-    ]);
   jest.spyOn(traderService, "getTrader").mockImplementation(async () => ({
     id: "1",
     marketplace: "Hotel Supply B2B",
@@ -40,6 +18,22 @@ const mockService = () => {
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
     status: TraderStatus.PASSED,
+    companyName: "AAA",
+    phoneNumber: "12312451",
+    country: "Vietnam",
+    address: "232 Akd ale",
+    emailVerified: true,
+    verifyingResult: [
+      {
+        id: "1",
+        date: "2021-10-22T05:19:42Z",
+        type: "string",
+        provider: "Raputel",
+        status: TraderStatus.PASSED,
+        message:
+          "Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      },
+    ],
   }));
 
   const mockUseParams = mockRouter.useRouter as jest.Mock;

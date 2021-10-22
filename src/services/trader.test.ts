@@ -1,12 +1,18 @@
-import {
-  getTrader,
-  getTraderContact,
-  getTraderVerifyingResult,
-  getTraders,
-} from "./trader";
+import { getTrader, getTraders } from "./trader";
 import { TraderStatus } from "models/trader";
+
+var globalRef: any = global;
+const mockFetch = (jsonResponse: any) => {
+  globalRef.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: async () => jsonResponse,
+      ok: true,
+    })
+  );
+};
+
 test("getTraders should work", () => {
-  expect(getTraders()).resolves.toStrictEqual([
+  const data = [
     {
       id: "1",
       marketplace: "Hotel Supply B2B",
@@ -63,40 +69,20 @@ test("getTraders should work", () => {
       dateJoined: "2021-10-11",
       status: TraderStatus.PASSED,
     },
-  ]);
+  ];
+  mockFetch(data);
+  expect(getTraders()).resolves.toStrictEqual(data);
 });
 
 test("getTrader should work", () => {
-  expect(getTrader("1")).resolves.toStrictEqual({
+  const data = {
     id: "1",
     marketplace: "Hotel Supply B2B",
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
     status: TraderStatus.PASSED,
-  });
-});
-
-test("getTraderContact should work", () => {
-  expect(getTraderContact("1")).resolves.toStrictEqual({
-    companyName: "AAA",
-    phoneNumber: "12312451",
-    email: "email@asd.cos",
-    country: "Vietnam",
-    address: "232 Akd ale",
-    emailVerified: true,
-  });
-});
-
-test("getTraderKYCResult should work", () => {
-  expect(getTraderVerifyingResult("1")).resolves.toStrictEqual([
-    {
-      id: "1",
-      date: "2021-1-1-2",
-      type: "string",
-      provider: "Raputel",
-      status: TraderStatus.PENDING_EMAIL,
-      message: "My message",
-    },
-  ]);
+  };
+  mockFetch(data);
+  expect(getTrader("1")).resolves.toStrictEqual(data);
 });
