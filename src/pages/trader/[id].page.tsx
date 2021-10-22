@@ -1,15 +1,7 @@
 import React from "react";
 import { TraderContact } from "components/trader/TraderContact";
-import {
-  TraderContact as Model,
-  Trader as TraderModel,
-  TraderVerifyingResult,
-} from "models/trader";
-import {
-  getTraderContact,
-  getTraderVerifyingResult,
-  getTrader,
-} from "services/trader";
+import { TraderContact as Model } from "models/trader";
+import { getTrader } from "services/trader";
 import { TraderVerifyingTable } from "components/trader/TraderVerifyingTable";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import { Box, Skeleton, Typography } from "@mui/material";
@@ -17,23 +9,19 @@ import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
 import { useRouter } from "next/router";
 
 const Page = () => {
-  const [contact, setContact] = React.useState<Model>();
-  const [kycResult, setKYCResult] = React.useState<TraderVerifyingResult[]>();
-  const [trader, setTrader] = React.useState<TraderModel>();
+  const [trader, setTrader] = React.useState<Model>();
   const router = useRouter();
   const { id } = router.query;
 
   React.useEffect(() => {
     if (typeof id !== "string") return;
     getTrader(id).then(setTrader);
-    getTraderContact(id).then(setContact);
-    getTraderVerifyingResult(id).then(setKYCResult);
   }, [id]);
   return (
     <>
       <AdminLayout.Header>
         {trader?.marketplace ?? <Skeleton variant="text" />} |{" "}
-        {contact?.companyName ?? <Skeleton variant="text" />}
+        {trader?.companyName ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
       <AdminLayout.Breadcrumbs aria-label="breadcrumb">
         <WrappedLink
@@ -46,9 +34,9 @@ const Page = () => {
         </WrappedLink>
         <Typography fontWeight="light">Trader Details</Typography>
       </AdminLayout.Breadcrumbs>
-      <TraderContact contact={contact} />
+      <TraderContact contact={trader} />
       <Box sx={{ marginTop: "24px" }}>
-        <TraderVerifyingTable data={kycResult} />
+        <TraderVerifyingTable data={trader?.verifyingResult} />
       </Box>
     </>
   );

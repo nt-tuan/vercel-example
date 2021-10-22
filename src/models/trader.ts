@@ -33,10 +33,15 @@ export interface Trader {
 }
 
 export interface TraderContact {
+  marketplace: string;
+  username: string;
+  dateJoined: string;
+  status: TraderStatus;
   companyName?: string;
   phoneNumber?: string;
   email?: string;
   country?: string;
   address?: string;
   emailVerified: boolean;
+  verifyingResult: TraderVerifyingResult[];
 }
