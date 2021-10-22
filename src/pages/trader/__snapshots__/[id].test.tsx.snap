@@ -437,7 +437,7 @@ exports[`Trader should render correctly 1`] = `
                         style="min-width: 200px; max-width: 200px; min-height: 52px; max-height: 52px; line-height: 51px;"
                         tabindex="-1"
                       >
-                        10/22/2021, 12:19:42 PM
+                        2021-10-22T05:19:42Z
                       </div>
                       <div
                         aria-colindex="2"
