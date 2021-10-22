@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
-import { TraderStatusBadge } from "./TraderStatusBadge";
+import { TraderStatusBadge, TraderStatusBadgeProps } from "./TraderStatusBadge";
 import { TraderStatus } from "models/trader";
 
-const setup = (props: any) => {
+const setup = (props: TraderStatusBadgeProps) => {
   return render(<TraderStatusBadge {...props} />);
 };
 

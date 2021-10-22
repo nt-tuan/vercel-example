@@ -11,11 +11,11 @@ const statusColor: {
   [TraderStatus.EMAIL_VERIFIED]: "success",
   [TraderStatus.INACTIVE]: "default",
 };
-interface Props {
+export interface TraderStatusBadgeProps {
   status?: TraderStatus;
   size?: "small" | "medium";
 }
-export const TraderStatusBadge = ({ status, size }: Props) => {
+export const TraderStatusBadge = ({ status, size }: TraderStatusBadgeProps) => {
   if (!status) return <></>;
   return (
     <Chip

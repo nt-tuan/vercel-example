@@ -1,14 +1,11 @@
 import { getTrader, getTraders } from "./trader";
 import { TraderStatus } from "models/trader";
-
-var globalRef: any = global;
-const mockFetch = (jsonResponse: any) => {
-  globalRef.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: async () => jsonResponse,
-      ok: true,
-    })
-  );
+import * as mockedHttpAPI from "./httpAPI";
+jest.mock("./httpAPI");
+const mockFetch = (jsonResponse: unknown) => {
+  jest
+    .spyOn(mockedHttpAPI.HttpAPI.prototype, "get")
+    .mockImplementation(() => Promise.resolve(jsonResponse));
 };
 
 test("getTraders should work", () => {
@@ -84,5 +81,5 @@ test("getTrader should work", () => {
     status: TraderStatus.PASSED,
   };
   mockFetch(data);
-  expect(getTrader("1")).resolves.toStrictEqual(data);
+  expect(getTrader()).resolves.toStrictEqual(data);
 });

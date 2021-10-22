@@ -1,10 +1,10 @@
-import { InvalidFormatError, UnexpectedError } from "./apiError";
+import { APIError, InvalidFormatError, UnexpectedError } from "./apiError";
 import { HttpAPI } from "./httpAPI";
-var globalRef = global;
+const globalRef = global;
 
-const mockFetch = (response?: any, reject?: any) => {
+const mockFetch = (response?: unknown, reject?: APIError | string) => {
   globalRef.fetch = async () => {
-    if (response) return response;
+    if (response) return response as Response;
     throw reject;
   };
 };

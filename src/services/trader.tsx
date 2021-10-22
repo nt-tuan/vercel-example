@@ -6,6 +6,6 @@ export const getTraders: () => Promise<Trader[]> = async () => {
   return traderAPI.get<Trader[]>("/traders.json");
 };
 
-export const getTrader = async (id: string) => {
+export const getTrader = async () => {
   return traderAPI.get<TraderContact>("/trader.json");
 };
