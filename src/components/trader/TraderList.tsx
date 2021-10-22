@@ -7,11 +7,12 @@ import {
 } from "@mui/x-data-grid";
 import { TraderStatusBadge } from "./TraderStatusBadge";
 import { useRouter } from "next/router";
+import { dateTimeColumnFormatter } from "helpers/table";
 const columns: GridColDef[] = [
   {
     field: "marketplace",
     headerName: "Marketplace",
-    width: 130,
+    minWidth: 250,
     sortable: false,
     filterable: false,
     resizable: false,
@@ -39,7 +40,8 @@ const columns: GridColDef[] = [
     sortable: false,
     filterable: false,
     resizable: false,
-    width: 130,
+    minWidth: 200,
+    valueFormatter: dateTimeColumnFormatter,
   },
   {
     field: "status",
