@@ -9,7 +9,6 @@ export class HttpAPI {
   }
   async get<T>(path: string, accessToken?: string) {
     const headers = getHeaders(accessToken);
-    console.log(this.basePath);
     const response = await fetch(this.basePath + path, {
       method: "GET",
       headers,
