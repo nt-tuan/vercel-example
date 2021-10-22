@@ -2,6 +2,7 @@ import React from "react";
 import { Link as MUILink, LinkProps } from "@mui/material";
 import Link from "next/link";
 
+// eslint-disable-next-line react/display-name
 const MyLink = React.forwardRef(
   (
     { href, className, children }: LinkProps,

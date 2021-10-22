@@ -38,6 +38,7 @@ export const AdminLayout = (props: Props) => {
   );
 };
 
+// eslint-disable-next-line react/display-name
 AdminLayout.Header = ({ children }: { children: React.ReactNode }) => {
   return (
     <Typography variant="h4" component="h2">
@@ -46,6 +47,7 @@ AdminLayout.Header = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+// eslint-disable-next-line react/display-name
 AdminLayout.Breadcrumbs = (props: BreadcrumbsProps) => {
   return (
     <Box sx={{ marginTop: "8px", marginBottom: "24px" }}>
@@ -54,6 +56,7 @@ AdminLayout.Breadcrumbs = (props: BreadcrumbsProps) => {
   );
 };
 
+// eslint-disable-next-line react/display-name
 AdminLayout.Content = ({ children }: { children: React.ReactNode }) => {
   return <Box sx={{ marginTop: "24px" }}>{children}</Box>;
 };

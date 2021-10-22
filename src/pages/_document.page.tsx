@@ -15,7 +15,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="shortcut icon"
+          href={process.env.BASE_PATH + "/favicon.ico"}
+        />
         <Head />
         <body>
           <Main />
