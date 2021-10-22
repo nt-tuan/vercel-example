@@ -14,15 +14,11 @@ export class HttpAPI {
       headers,
     });
     if (!response.ok) {
-      try {
-        const errorData = await parseJSONResponse<ServerError>(
-          response,
-          UnexpectedError
-        );
-        throw getAPIError(errorData.code);
-      } catch (error) {
-        throw error;
-      }
+      const errorData = await parseJSONResponse<ServerError>(
+        response,
+        UnexpectedError
+      );
+      throw getAPIError(errorData.code);
     }
     return parseJSONResponse<T>(response);
   }
