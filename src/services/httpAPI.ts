@@ -9,18 +9,22 @@ export class HttpAPI {
   }
   async get<T>(path: string, accessToken?: string) {
     const headers = getHeaders(accessToken);
-    const response = await fetch(this.basePath + path, {
-      method: "GET",
-      headers,
-    });
-    if (!response.ok) {
-      const errorData = await parseJSONResponse<ServerError>(
-        response,
-        UnexpectedError
-      );
-      throw getAPIError(errorData.code);
+    try {
+      const response = await fetch(this.basePath + path, {
+        method: "GET",
+        headers,
+      });
+      if (!response.ok) {
+        const errorData = await parseJSONResponse<ServerError>(
+          response,
+          UnexpectedError
+        );
+        throw getAPIError(errorData.code);
+      }
+      return parseJSONResponse<T>(response);
+    } catch {
+      throw UnexpectedError;
     }
-    return parseJSONResponse<T>(response);
   }
 }
 
