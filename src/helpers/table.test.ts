@@ -1,5 +1,4 @@
 import { dateTimeColumnFormatter } from "./table";
-import * as mockedDatetime from "./datetime";
 jest.mock("./datetime");
 test("dateTimeColumnFormatter should work", () => {
   expect(
