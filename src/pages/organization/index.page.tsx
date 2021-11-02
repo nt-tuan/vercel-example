@@ -3,7 +3,7 @@ import { getOrganizations } from "services/organization";
 import { Organization } from "models/organization";
 import { OrganizationTable } from "components/organization/OrganizationTable";
 import { getLayout } from "layouts/AdminLayout";
-const OrganizationPage = () => {
+const OrganizationPages = () => {
   const [data, setData] = React.useState<Organization[]>();
   React.useEffect(() => {
     let subscription = true;
@@ -18,5 +18,5 @@ const OrganizationPage = () => {
   return <OrganizationTable organizations={data} />;
 };
 
-OrganizationPage.getLayout = getLayout;
-export default OrganizationPage;
+OrganizationPages.getLayout = getLayout;
+export default OrganizationPages;
