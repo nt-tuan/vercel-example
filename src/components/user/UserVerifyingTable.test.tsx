@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { TraderStatus } from "models/trader";
-import { TraderVerifyingTable } from "./TraderVerifyingTable";
+import { UserStatus } from "models/user";
+import { UserVerifyingTable } from "../common/SessionTable/VerificationTable";
 
 const data = [
   {
@@ -8,14 +8,12 @@ const data = [
     date: "2021-1-1-2",
     type: "string",
     provider: "Raputel",
-    status: TraderStatus.PASSED,
+    status: UserStatus.PASSED,
     message: "My message",
   },
 ];
-test("TraderVerifyingTable should work", async () => {
-  const { getByText, getByTitle } = render(
-    <TraderVerifyingTable data={data} />
-  );
+test("should work", async () => {
+  const { getByText, getByTitle } = render(<UserVerifyingTable data={data} />);
   expect(getByText("Raputel")).toBeInTheDocument();
   await waitFor(() => getByTitle("View message"));
   fireEvent.click(getByTitle("View message"));

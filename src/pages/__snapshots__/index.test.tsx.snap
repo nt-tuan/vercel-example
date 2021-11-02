@@ -6,13 +6,13 @@ exports[`TraderList should render 1`] = `
     <h2
       class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
     >
-      Traders
+      Users
     </h2>
     <div
       class="MuiBox-root css-178yklu"
     >
       <div
-        aria-colcount="5"
+        aria-colcount="6"
         aria-multiselectable="false"
         aria-rowcount="1"
         class="MuiDataGrid-root MuiDataGrid-root MuiDataGrid-autoHeight"
@@ -32,7 +32,7 @@ exports[`TraderList should render 1`] = `
               aria-rowindex="1"
               class="MuiDataGrid-columnHeaderWrapper scroll"
               role="row"
-              style="transform: translate3d(0px, 0px, 0px); min-width: 890px;"
+              style="transform: translate3d(0px, 0px, 0px); min-width: 1020px;"
             >
               <div
                 aria-colindex="1"
@@ -159,7 +159,7 @@ exports[`TraderList should render 1`] = `
               </div>
               <div
                 class="MuiDataGrid-cell"
-                style="min-width: 380px; max-width: 380px; line-height: 55px; min-height: 56px; max-height: 56px;"
+                style="min-width: 510px; max-width: 510px; line-height: 55px; min-height: 56px; max-height: 56px;"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@ exports[`TraderList should render 1`] = `
               >
                 <div
                   class="MuiDataGrid-dataContainer"
-                  style="min-width: 890px; min-height: 52px;"
+                  style="min-width: 1020px; min-height: 52px;"
                 >
                   <div
                     class="MuiDataGrid-viewport"
@@ -184,7 +184,7 @@ exports[`TraderList should render 1`] = `
                   >
                     <div
                       class="MuiDataGrid-renderingZone"
-                      style="max-height: 52px; width: 890px; transform: translate3d(0px, 0px, 0px);"
+                      style="max-height: 52px; width: 1020px; transform: translate3d(0px, 0px, 0px);"
                     >
                       <div
                         aria-rowindex="2"
@@ -230,7 +230,7 @@ exports[`TraderList should render 1`] = `
                         </div>
                         <div
                           class="MuiDataGrid-cell"
-                          style="min-width: 380px; max-width: 380px; line-height: 51px; min-height: 52px; max-height: 52px;"
+                          style="min-width: 510px; max-width: 510px; line-height: 51px; min-height: 52px; max-height: 52px;"
                         />
                       </div>
                     </div>

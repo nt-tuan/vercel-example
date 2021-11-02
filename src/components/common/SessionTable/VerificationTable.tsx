@@ -1,15 +1,23 @@
 import React from "react";
-import { TraderVerifyingResult as Model, TraderStatus } from "models/trader";
+
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { TraderStatusBadge } from "./TraderStatusBadge";
-import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogActions,
+  IconButton,
+  Button,
+} from "@mui/material";
 import { dateTimeColumnFormatter } from "helpers/table";
+import { ColorBadge } from "../ColorBadge/ColorBadge";
+import { VerificationHistory } from "models/verification";
 interface Props {
-  data?: Model[];
+  data?: VerificationHistory[];
 }
 
-export const TraderVerifyingTable = ({ data }: Props) => {
+export const VerificationTable = ({ data }: Props) => {
   const [message, setMessage] = React.useState<string>();
   const viewMessage = (actionMessage?: string) => {
     setMessage(actionMessage);
@@ -18,15 +26,6 @@ export const TraderVerifyingTable = ({ data }: Props) => {
     {
       field: "id",
       hide: true,
-    },
-    {
-      field: "date",
-      headerName: "Date",
-      sortable: false,
-      filterable: false,
-      resizable: false,
-      minWidth: 200,
-      valueFormatter: dateTimeColumnFormatter,
     },
     {
       field: "type",
@@ -45,6 +44,15 @@ export const TraderVerifyingTable = ({ data }: Props) => {
       resizable: false,
     },
     {
+      field: "date",
+      headerName: "Date",
+      sortable: false,
+      filterable: false,
+      resizable: false,
+      minWidth: 250,
+      valueFormatter: dateTimeColumnFormatter,
+    },
+    {
       field: "status",
       headerName: "Status",
       width: 180,
@@ -52,7 +60,7 @@ export const TraderVerifyingTable = ({ data }: Props) => {
       filterable: false,
       resizable: false,
       renderCell: (params: GridValueGetterParams) => (
-        <TraderStatusBadge status={params.value as TraderStatus} />
+        <ColorBadge status={params.value as string} />
       ),
     },
     {
@@ -73,6 +81,7 @@ export const TraderVerifyingTable = ({ data }: Props) => {
       },
     },
   ];
+  const closeModal = () => setMessage(undefined);
   return (
     <>
       <DataGrid
@@ -84,13 +93,14 @@ export const TraderVerifyingTable = ({ data }: Props) => {
         disableColumnMenu
         autoHeight
       />
-      <Dialog
-        onClose={() => setMessage(undefined)}
-        open={message != null}
-        fullWidth
-      >
+      <Dialog onClose={closeModal} open={message != null} fullWidth>
         <DialogTitle>KYC request and response </DialogTitle>
         <DialogContent>{message}</DialogContent>
+        <DialogActions>
+          <Button onClick={closeModal}>
+            <strong>Close</strong>
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   );

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "marketplace": "8 corners",
+    "companyName": "A",
+    "dateJoined": "2021-10-22T04:19:42Z",
+    "status": "KYB Passed"
+  },
+  {
+    "id": "2",
+    "marketplace": "9 corners",
+    "companyName": "B",
+    "dateJoined": "2021-10-22T04:19:42Z",
+    "status": "KYB - Failed"
+  },
+  {
+    "id": "3",
+    "marketplace": "10 corners",
+    "companyName": "C",
+    "dateJoined": "2021-10-22T04:19:42Z",
+    "status": "KYB - Pending"
+  },
+  {
+    "id": "4",
+    "marketplace": "11 corners",
+    "companyName": "D",
+    "dateJoined": "2021-10-22T04:19:42Z",
+    "status": "KYB - In Progress"
+  }
+]

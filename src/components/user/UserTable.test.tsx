@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
-import { TraderList } from "./TraderList";
-import { TraderStatus } from "models/trader";
+import { UserTable } from "./UserTable";
+import { UserStatus } from "models/user";
 import * as mockRouter from "next/router";
 jest.mock("next/router");
 const data = [
@@ -10,7 +10,8 @@ const data = [
     username: "my username",
     email: "firstname@company.com  ",
     dateJoined: "2021-10-11",
-    status: TraderStatus.PASSED,
+    status: UserStatus.PASSED,
+    role: "Owner",
   },
 ];
 
@@ -20,7 +21,7 @@ test("TraderList should work", () => {
   mockedFunction.mockReturnValue({
     push: pushFn,
   });
-  const { getByText } = render(<TraderList traders={data} />);
+  const { getByText } = render(<UserTable users={data} />);
   fireEvent.click(getByText("Hotel Supply B2B"));
-  expect(pushFn).toBeCalledWith("/trader/666");
+  expect(pushFn).toBeCalledWith("/user/666");
 });

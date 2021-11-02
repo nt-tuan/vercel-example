@@ -1,5 +1,5 @@
 import { getTrader, getTraders } from "./trader";
-import { TraderStatus } from "models/trader";
+import { UserStatus } from "models/user";
 import * as mockedHttpAPI from "./httpAPI";
 jest.mock("./httpAPI");
 const mockFetch = (jsonResponse: unknown) => {
@@ -16,7 +16,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
     {
       id: "2",
@@ -24,7 +24,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
     {
       id: "3",
@@ -32,7 +32,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
     {
       id: "4",
@@ -40,7 +40,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
     {
       id: "5",
@@ -48,7 +48,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
     {
       id: "6",
@@ -56,7 +56,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
     {
       id: "7",
@@ -64,7 +64,7 @@ test("getTraders should work", () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
   ];
   mockFetch(data);
@@ -78,7 +78,7 @@ test("getTrader should work", () => {
     username: "tuan",
     email: "tuan@tuan.tuan  ",
     dateJoined: "2021-10-11",
-    status: TraderStatus.PASSED,
+    status: UserStatus.PASSED,
   };
   mockFetch(data);
   expect(getTrader()).resolves.toStrictEqual(data);

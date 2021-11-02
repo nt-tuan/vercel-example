@@ -1,15 +1,15 @@
 import { render } from "@testing-library/react";
-import { TraderStatusBadge, TraderStatusBadgeProps } from "./TraderStatusBadge";
-import { TraderStatus } from "models/trader";
+import { UserStatusBadge, UserStatusBadgeProps } from "./UserStatusBadge";
+import { UserStatus } from "models/user";
 
-const setup = (props: TraderStatusBadgeProps) => {
-  return render(<TraderStatusBadge {...props} />);
+const setup = (props: UserStatusBadgeProps) => {
+  return render(<UserStatusBadge {...props} />);
 };
 
-describe("TraderStatusBadge should work", () => {
+describe("should work", () => {
   const testCases = [
     {
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
       expect: "KYC Passed",
     },
   ];

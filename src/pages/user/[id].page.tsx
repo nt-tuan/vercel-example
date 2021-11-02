@@ -1,27 +1,33 @@
 import React from "react";
-import { TraderContact } from "components/trader/TraderContact";
-import { TraderContact as Model } from "models/trader";
-import { getTrader } from "services/trader";
-import { TraderVerifyingTable } from "components/trader/TraderVerifyingTable";
+import { UserContact } from "components/user/UserContact";
+import { UserContact as Model, VerificationSession } from "models/user";
+import {
+  getUserContact,
+  getUserVerificationHistory,
+  getUserVerificationSesions,
+} from "services/user";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
 import { useRouter } from "next/router";
+import { VerificationSessionTable } from "components/common/SessionTable/SessionTable";
 
 const Page = () => {
   const [trader, setTrader] = React.useState<Model>();
+  const [sessions, setSessions] = React.useState<VerificationSession[]>();
   const router = useRouter();
   const { id } = router.query;
 
   React.useEffect(() => {
     if (typeof id !== "string") return;
-    getTrader(id).then(setTrader);
+    getUserContact(id).then(setTrader);
+    getUserVerificationSesions().then(setSessions);
   }, [id]);
   return (
     <>
       <AdminLayout.Header>
         {trader?.marketplace ?? <Skeleton variant="text" />} |{" "}
-        {trader?.companyName ?? <Skeleton variant="text" />}
+        {trader?.username ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
       <AdminLayout.Breadcrumbs aria-label="breadcrumb">
         <WrappedLink
@@ -30,13 +36,16 @@ const Page = () => {
           href="/"
           fontWeight="bold"
         >
-          Trader
+          Users
         </WrappedLink>
-        <Typography fontWeight="light">Trader Details</Typography>
+        <Typography fontWeight="light">User Details</Typography>
       </AdminLayout.Breadcrumbs>
-      <TraderContact contact={trader} />
+      <UserContact contact={trader} />
       <Box sx={{ marginTop: "24px" }}>
-        <TraderVerifyingTable data={trader?.verifyingResult} />
+        <VerificationSessionTable
+          data={sessions}
+          getSession={getUserVerificationHistory}
+        />
       </Box>
     </>
   );

@@ -1,13 +1,13 @@
-import { Trader, TraderStatus } from "models/trader";
+import { User, UserStatus } from "models/user";
 import {
   DataGrid,
   GridColDef,
   GridRowParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
-import { TraderStatusBadge } from "./TraderStatusBadge";
+import { UserStatusBadge } from "./UserStatusBadge";
 import { useRouter } from "next/router";
-import { dateTimeColumnFormatter } from "helpers/table";
+import { dateColumnFormatter } from "helpers/table";
 const columns: GridColDef[] = [
   {
     field: "marketplace",
@@ -35,13 +35,21 @@ const columns: GridColDef[] = [
     resizable: false,
   },
   {
+    field: "role",
+    headerName: "Role",
+    width: 130,
+    sortable: false,
+    filterable: false,
+    resizable: false,
+  },
+  {
     field: "dateJoined",
     headerName: "Date Joined",
     sortable: false,
     filterable: false,
     resizable: false,
     minWidth: 200,
-    valueFormatter: dateTimeColumnFormatter,
+    valueFormatter: dateColumnFormatter,
   },
   {
     field: "status",
@@ -52,25 +60,25 @@ const columns: GridColDef[] = [
     resizable: false,
     renderCell: (params: GridValueGetterParams) =>
       params.value && (
-        <TraderStatusBadge
+        <UserStatusBadge
           status={
-            TraderStatus[params.value.toString() as keyof typeof TraderStatus]
+            UserStatus[params.value.toString() as keyof typeof UserStatus]
           }
         />
       ),
   },
 ];
 
-export const TraderList = ({ traders }: { traders?: Trader[] }) => {
+export const UserTable = ({ users }: { users?: User[] }) => {
   const router = useRouter();
   const handleRowClick = (params: GridRowParams) => {
-    router.push("/trader/" + params.row.id);
+    router.push("/user/" + params.row.id);
   };
   return (
     <DataGrid
-      rows={traders ?? []}
+      rows={users ?? []}
       columns={columns}
-      loading={traders == null}
+      loading={users == null}
       hideFooter
       disableColumnMenu
       autoHeight

@@ -1,6 +1,6 @@
 import { act, render } from "@testing-library/react";
 import * as traderService from "services/trader";
-import { TraderStatus } from "models/trader";
+import { UserStatus } from "models/user";
 import TraderList from "./index.page";
 jest.mock("services/trader");
 test("TraderList should render", async () => {
@@ -11,7 +11,7 @@ test("TraderList should render", async () => {
       username: "tuan",
       email: "tuan@tuan.tuan  ",
       dateJoined: "2021-10-11",
-      status: TraderStatus.PASSED,
+      status: UserStatus.PASSED,
     },
   ];
   let containerElement;

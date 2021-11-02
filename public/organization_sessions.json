@@ -1,0 +1,44 @@
+[
+  {
+    "sessionID": "12312",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "PASSED"
+  },
+  {
+    "sessionID": "12313",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "FAILED"
+  },
+  {
+    "sessionID": "12314",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "EMAIL_VERIFIED"
+  },
+  {
+    "sessionID": "12315",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "PENDING"
+  },
+  {
+    "sessionID": "12316",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "PENDING_EMAIL"
+  },
+  {
+    "sessionID": "12317",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "INACTIVE"
+  },
+  {
+    "sessionID": "12318",
+    "type": "KYC",
+    "requested": "2021-11-22T03:19:42Z",
+    "status": "IN_PROGRESS"
+  }
+]

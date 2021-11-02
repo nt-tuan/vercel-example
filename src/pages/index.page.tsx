@@ -1,16 +1,16 @@
 import React from "react";
-import { TraderList as TraderTable } from "components/trader/TraderList";
-import { getTraders } from "services/trader";
-import { Trader } from "models/trader";
+import { UserTable } from "components/user/UserTable";
+import { getUsers } from "services/user";
+import { User } from "models/user";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
 
-const TraderList = () => {
-  const [traders, setTraders] = React.useState<Trader[]>();
+const UsersPage = () => {
+  const [users, setUsers] = React.useState<User[]>();
   React.useEffect(() => {
     let subscription = true;
-    getTraders().then((resposne) => {
+    getUsers().then((resposne) => {
       if (!subscription) return;
-      setTraders(resposne);
+      setUsers(resposne);
     });
     return () => {
       subscription = false;
@@ -18,13 +18,13 @@ const TraderList = () => {
   }, []);
   return (
     <div>
-      <AdminLayout.Header>Traders</AdminLayout.Header>
+      <AdminLayout.Header>Users</AdminLayout.Header>
       <AdminLayout.Content>
-        <TraderTable traders={traders} />
+        <UserTable users={users} />
       </AdminLayout.Content>
     </div>
   );
 };
-TraderList.getLayout = getLayout;
+UsersPage.getLayout = getLayout;
 
-export default TraderList;
+export default UsersPage;

@@ -3,36 +3,120 @@ import {
   Box,
   Breadcrumbs,
   BreadcrumbsProps,
+  Divider,
+  Drawer as MuiDrawer,
+  IconButton,
+  List,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { NextPage } from "next";
 import React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import { styled } from "@mui/material/styles";
+import { SideMenu } from "./SideMenu";
+const drawerWidth = 240;
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  "& .MuiDrawer-paper": {
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    boxSizing: "border-box",
+    ...(!open && {
+      overflowX: "hidden",
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      width: theme.spacing(7),
+      [theme.breakpoints.up("sm")]: {
+        width: theme.spacing(9),
+      },
+    }),
+  },
+}));
+
 interface Props {
   children: React.ReactNode;
 }
 
 export const AdminLayout = (props: Props) => {
+  const [open, setOpen] = React.useState(true);
+  const toggleDrawer = () => {
+    setOpen((op) => !op);
+  };
   return (
-    <Box sx={{ backgroundColor: "#fafafa", minHeight: "100%" }}>
-      <AppBar position="static">
-        <Toolbar>
-          {/* <IconButton
-            size="large"
+    <Box
+      sx={{ display: "flex", backgroundColor: "#fafafa", minHeight: "100%" }}
+    >
+      <AppBar position="absolute">
+        <Toolbar
+          sx={{
+            pr: "24px", // keep right padding when drawer closed
+          }}
+        >
+          <IconButton
             edge="start"
             color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+            aria-label="open drawer"
+            onClick={toggleDrawer}
+            sx={{
+              marginRight: "36px",
+              ...(open && { display: "none" }),
+            }}
           >
             <MenuIcon />
-          </IconButton> */}
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          </IconButton>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            sx={{ flexGrow: 1 }}
+          >
             Distichain
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box sx={{ marginTop: "24px", marginLeft: "20px", marginRight: "20px" }}>
-        {props.children}
+      <Drawer variant="permanent" open={open}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            px: [1],
+          }}
+        >
+          <IconButton onClick={toggleDrawer}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </Toolbar>
+        <Divider />
+        <List>
+          <SideMenu />
+        </List>
+      </Drawer>
+      <Box
+        component="main"
+        sx={{
+          backgroundColor: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.grey[100]
+              : theme.palette.grey[900],
+          flexGrow: 1,
+          height: "100vh",
+          overflow: "auto",
+        }}
+      >
+        <Toolbar />
+        <Box sx={{ padding: "24px 32px" }}>{props.children}</Box>
       </Box>
     </Box>
   );
