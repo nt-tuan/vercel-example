@@ -19,12 +19,12 @@ const filters = [
   },
   {
     name: "Email Verification",
-    detailPrefix: "/user/email-verificatoin",
+    detailPrefix: "/user/email-verification",
     getUsers: getUsersEmailVerification,
   },
   {
     name: "Document Verification",
-    detailPrefix: "/user/document-verificatoin",
+    detailPrefix: "/user/document-verification",
     getUsers: getUserDocumentVerification,
   },
 ];
