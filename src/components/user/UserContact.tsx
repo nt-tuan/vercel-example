@@ -3,17 +3,6 @@ import { ContactCard } from "components/common/ContactCard/ContactCard";
 import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
 import { useRouter } from "next/router";
 
-interface Props {
-  marketplaceName?: string;
-  firstName?: string;
-  lastName?: string;
-  phone?: string;
-  email?: string;
-  organizationName?: string;
-  country?: string;
-  status?: string;
-}
-
 export const UserContact = () => {
   const router = useRouter();
   const {
