@@ -16,21 +16,14 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { formatDateTime } from "helpers/datetime";
 import { VerificationTable } from "./VerificationTable";
-import { VerificationHistory } from "models/verification";
 import { ColorBadge } from "../ColorBadge/ColorBadge";
+import { Session, SessionHistory } from "models/session";
 
-type GetSessionType = (id: string) => Promise<VerificationHistory[]>;
 const VerificationHistoryRow = ({
-  getSession,
-  sessionID,
+  historySessions,
 }: {
-  getSession: GetSessionType;
-  sessionID: string;
+  historySessions: SessionHistory[];
 }) => {
-  const [history, setHistory] = React.useState<VerificationHistory[]>();
-  React.useEffect(() => {
-    getSession(sessionID).then(setHistory);
-  }, [getSession, sessionID]);
   return (
     <TableRow>
       <TableCell colSpan={6}>
@@ -38,26 +31,14 @@ const VerificationHistoryRow = ({
           <Typography variant="h5" component="div" gutterBottom>
             Verification History
           </Typography>
-          <VerificationTable data={history} />
+          <VerificationTable data={historySessions} />
         </Box>
       </TableCell>
     </TableRow>
   );
 };
 
-interface RowType {
-  sessionID: string;
-  type: string;
-  requested: string;
-  status: string;
-}
-const Row = ({
-  row,
-  getSession,
-}: {
-  row: RowType;
-  getSession: GetSessionType;
-}) => {
+const Row = ({ row }: { row: Session }) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -72,29 +53,23 @@ const Row = ({
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.sessionID}
+          {row.id}
         </TableCell>
         <TableCell>{row.type}</TableCell>
-        <TableCell>{formatDateTime(row.requested)}</TableCell>
+        <TableCell>{formatDateTime(row.requestedDate)}</TableCell>
         <TableCell>
           <ColorBadge status={row.status} />
         </TableCell>
       </TableRow>
-      {open && (
-        <VerificationHistoryRow
-          sessionID={row.sessionID}
-          getSession={getSession}
-        />
-      )}
+      {open && <VerificationHistoryRow historySessions={row.historyList} />}
     </>
   );
 };
 
 interface Props {
-  data?: RowType[];
-  getSession: GetSessionType;
+  data?: Session[];
 }
-export const VerificationSessionTable = ({ data, getSession }: Props) => {
+export const VerificationSessionTable = ({ data }: Props) => {
   if (data == null) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -116,10 +91,7 @@ export const VerificationSessionTable = ({ data, getSession }: Props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data &&
-            data.map((row) => (
-              <Row key={row.sessionID} row={row} getSession={getSession} />
-            ))}
+          {data && data.map((row) => <Row key={row.id} row={row} />)}
         </TableBody>
       </Table>
     </TableContainer>

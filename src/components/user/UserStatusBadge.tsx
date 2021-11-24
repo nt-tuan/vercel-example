@@ -1,28 +1,21 @@
 import { Chip } from "@mui/material";
-import { UserStatus, UserStatusLabel } from "models/user";
 
 const statusColor: {
-  [key in UserStatus]: "error" | "warning" | "info" | "success" | "default";
+  [key: string]: "error" | "warning" | "info" | "success" | "default";
 } = {
-  [UserStatus.FAILED]: "error",
-  [UserStatus.IN_PROGRESS]: "info",
-  [UserStatus.PENDING_EMAIL]: "warning",
-  [UserStatus.PASSED]: "success",
-  [UserStatus.EMAIL_VERIFIED]: "success",
-  [UserStatus.PENDING]: "warning",
-  [UserStatus.INACTIVE]: "default",
+  FAILED: "error",
+  IN_PROGRESS: "info",
+  PENDING_EMAIL: "warning",
+  PASSED: "success",
+  EMAIL_VERIFIED: "success",
+  PENDING: "warning",
+  INACTIVE: "default",
 };
 export interface UserStatusBadgeProps {
-  status?: UserStatus;
+  status?: string;
   size?: "small" | "medium";
 }
 export const UserStatusBadge = ({ status, size }: UserStatusBadgeProps) => {
   if (!status) return <></>;
-  return (
-    <Chip
-      color={statusColor[status]}
-      label={UserStatusLabel[status] ?? "default"}
-      size={size}
-    />
-  );
+  return <Chip color={statusColor[status]} label={status} size={size} />;
 };

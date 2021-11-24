@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { dateColumnFormatter } from "helpers/table";
 const columns: GridColDef[] = [
   {
-    field: "marketplace",
+    field: "organizationId",
     headerName: "Marketplace",
     minWidth: 250,
     sortable: false,
@@ -18,7 +18,7 @@ const columns: GridColDef[] = [
     resizable: false,
   },
   {
-    field: "companyName",
+    field: "organizationName",
     headerName: "Company Name",
     minWidth: 130,
     flex: 1,
@@ -27,7 +27,7 @@ const columns: GridColDef[] = [
     resizable: false,
   },
   {
-    field: "dateJoined",
+    field: "organizationJoinedDate",
     headerName: "Date Joined",
     sortable: false,
     filterable: false,

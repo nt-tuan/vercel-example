@@ -3,39 +3,33 @@ import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import { Box, Skeleton } from "@mui/material";
 import { useRouter } from "next/router";
 import { VerificationSessionTable } from "components/common/SessionTable/SessionTable";
+import { Organization } from "models/organization";
 import {
-  OrganizationContact,
-  OrganizationVerificationSession,
-} from "models/organization";
-import {
-  getOrganizationContact,
-  getOrganizationVerificationHistory,
-  getOrganizationVerificationSessions,
+  getOrganizations,
+  getOrganizationHistory,
 } from "services/organization";
+import { Session } from "models/session";
 
 const OrganizationPage = () => {
-  const [organization, setOrganization] = React.useState<OrganizationContact>();
-  const [sessions, setSessions] =
-    React.useState<OrganizationVerificationSession[]>();
+  const [organizations, setOrganizations] = React.useState<Organization[]>();
+  const [sessions, setSessions] = React.useState<Session[]>();
   const router = useRouter();
   const { id } = router.query;
+  const organization = organizations?.find((item) => item.id === id);
 
   React.useEffect(() => {
     if (typeof id !== "string") return;
-    getOrganizationContact().then(setOrganization);
-    getOrganizationVerificationSessions().then(setSessions);
+    getOrganizations().then(setOrganizations);
+    getOrganizationHistory(id).then(setSessions);
   }, [id]);
   return (
     <>
       <AdminLayout.Header>
-        {organization?.marketplace ?? <Skeleton variant="text" />} |{" "}
-        {organization?.companyName ?? <Skeleton variant="text" />}
+        {organization?.organizationId ?? <Skeleton variant="text" />} |{" "}
+        {organization?.organizationName ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
       <Box sx={{ marginTop: "24px" }}>
-        <VerificationSessionTable
-          data={sessions}
-          getSession={getOrganizationVerificationHistory}
-        />
+        <VerificationSessionTable data={sessions} />
       </Box>
     </>
   );

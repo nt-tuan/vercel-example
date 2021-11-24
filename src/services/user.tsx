@@ -1,20 +1,19 @@
-import { User, UserContact, VerificationSession } from "models/user";
-import { VerificationHistory } from "models/verification";
-import { HttpAPI } from "./httpAPI";
+import { Session } from "models/session";
+import { User } from "models/user";
+import { api } from "./api";
 
-const userAPI = new HttpAPI("/core-services/dc-support");
-export const getUsers: () => Promise<User[]> = async () => {
-  return userAPI.get<User[]>("/traders.json");
+export const getUsersKYC: () => Promise<User[]> = async () => {
+  return api.get<User[]>("/users/kyc");
 };
-
-export const getUserContact = async (id: string) => {
-  return userAPI.get<UserContact>("/trader.json");
+export const getUsersEmailVerification = () => {
+  return api.get<User[]>("/users/email-verification");
 };
-
-export const getUserVerificationSesions = async () => {
-  return userAPI.get<VerificationSession[]>("/sessions.json");
+export const getUserDocumentVerification = () => {
+  return api.get<User[]>("/users/document-verification");
 };
-
-export const getUserVerificationHistory = async () => {
-  return userAPI.get<VerificationHistory[]>("/history.json");
-};
+export const getUserKYCVerificationHistory = (id: string) =>
+  api.get<Session[]>(`/users/kyc/${id}`);
+export const getUserEmailVerificationHistory = (id: string) =>
+  api.get<Session[]>(`/users/email-verification/${id}`);
+export const getUserDocumentVerificationHistory = (id: string) =>
+  api.get<Session[]>(`/users/document-verification/${id}`);
