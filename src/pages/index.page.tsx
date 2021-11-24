@@ -1,26 +1,99 @@
 import React from "react";
 import { UserTable } from "components/user/UserTable";
-import { getUsers } from "services/user";
+import {
+  getUserDocumentVerification,
+  getUsersEmailVerification,
+  getUsersKYC,
+} from "services/user";
 import { User } from "models/user";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import { useRouter } from "next/router";
 
+const filters = [
+  {
+    name: "KYC",
+    detailPrefix: "/user/kyc",
+    getUsers: getUsersKYC,
+  },
+  {
+    name: "Email Verification",
+    detailPrefix: "/user/email-verification",
+    getUsers: getUsersEmailVerification,
+  },
+  {
+    name: "Document Verification",
+    detailPrefix: "/user/document-verification",
+    getUsers: getUserDocumentVerification,
+  },
+];
 const UsersPage = () => {
-  const [users, setUsers] = React.useState<User[]>();
-  React.useEffect(() => {
-    let subscription = true;
-    getUsers().then((resposne) => {
-      if (!subscription) return;
-      setUsers(resposne);
+  const [selected, setSelected] = React.useState<{
+    name: string;
+    detailPrefix: string;
+    getUsers: () => Promise<User[]>;
+  }>(filters[0]);
+  const router = useRouter();
+  const navigateTo = (prefix: string, user: User) => {
+    const {
+      marketplaceName,
+      userId,
+      firstName,
+      lastName,
+      phone,
+      username,
+      email,
+      organizationName,
+      country,
+      role,
+      userJoinedDate,
+      status,
+    } = user;
+    const searchParams = new URLSearchParams({
+      marketplaceName,
+      userId,
+      firstName,
+      lastName,
+      phone,
+      username,
+      email,
+      organizationName,
+      country,
+      role,
+      userJoinedDate,
+      status,
     });
-    return () => {
-      subscription = false;
-    };
-  }, []);
+    router.push({
+      pathname: prefix + "/" + user.id,
+      search: searchParams.toString(),
+    });
+  };
   return (
     <div>
       <AdminLayout.Header>Users</AdminLayout.Header>
       <AdminLayout.Content>
-        <UserTable users={users} />
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={2}
+          sx={{ marginBottom: "20px" }}
+        >
+          <span>Filtered by</span>
+          {filters.map((item) => (
+            <Chip
+              key={item.name}
+              label={item.name}
+              color={item.name === selected?.name ? "primary" : undefined}
+              onClick={() => setSelected(item)}
+            />
+          ))}
+        </Stack>
+        <UserTable
+          onItemClick={(user) => navigateTo(selected.detailPrefix, user)}
+          getUsers={selected.getUsers}
+          type={selected.name}
+        />
       </AdminLayout.Content>
     </div>
   );

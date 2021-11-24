@@ -1,28 +1,12 @@
-import {
-  Organization,
-  OrganizationVerificationSession,
-} from "models/organization";
-import { VerificationHistory } from "models/verification";
-import { HttpAPI } from "./httpAPI";
+import { Organization } from "models/organization";
+import { Session } from "models/session";
+import { api } from "./api";
 
-const userAPI = new HttpAPI("/core-services/dc-support");
 export const getOrganizations: () => Promise<Organization[]> = async () => {
-  return userAPI.get<Organization[]>("/organizations.json");
+  return api.get<Organization[]>("/organizations");
 };
 
-export const getOrganizationContact = async () => {
-  return {
-    marketplace: "My marketplace",
-    companyName: "my company",
+export const getOrganizationHistory: (id: string) => Promise<Session[]> =
+  async (id) => {
+    return api.get<Session[]>(`/organizations/${id}`);
   };
-};
-
-export const getOrganizationVerificationSessions = async () => {
-  return userAPI.get<OrganizationVerificationSession[]>(
-    "/organization_sessions.json"
-  );
-};
-
-export const getOrganizationVerificationHistory = async () => {
-  return userAPI.get<VerificationHistory[]>("/history.json");
-};

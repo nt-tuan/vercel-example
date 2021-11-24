@@ -1,48 +1,52 @@
 import React from "react";
-import { UserContact as Model, UserStatus } from "models/user";
-import { UserStatusBadge } from "./UserStatusBadge";
 import { ContactCard } from "components/common/ContactCard/ContactCard";
+import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
+import { useRouter } from "next/router";
 
-interface Props {
-  contact?: Model;
-  status?: UserStatus;
-}
-
-export const UserContact = ({ contact }: Props) => {
+export const UserContact = () => {
+  const router = useRouter();
+  const {
+    firstName,
+    lastName,
+    phone,
+    email,
+    status,
+    organizationName,
+    country,
+  } = router.query;
+  const tryString = (value: string | string[] | undefined) => {
+    if (typeof value === "string") return value;
+    if (Array.isArray(value)) return value[0];
+    return "";
+  };
   const items = React.useMemo(() => {
-    if (contact == null) return undefined;
     return [
       {
         label: "Name",
-        value: contact?.name,
+        value: `${firstName} ${lastName}`,
       },
       {
         label: "Phone Number",
-        value: contact?.phoneNumber,
+        value: phone,
       },
       {
         label: "Email Address",
         value: (
           <div>
-            <div>{contact.email}</div>
-            {contact.emailVerified && (
-              <UserStatusBadge
-                status={UserStatus.EMAIL_VERIFIED}
-                size="small"
-              />
-            )}
+            <div>{email}</div>
+            {status && <ColorBadge status={tryString(status)} size="small" />}
           </div>
         ),
       },
       {
         label: "Company Name",
-        value: contact?.companyName,
+        value: organizationName,
       },
       {
         label: "Country",
-        value: contact?.country,
+        value: country,
       },
     ];
-  }, [contact]);
+  }, [firstName, lastName, phone, email, status, organizationName, country]);
   return <ContactCard title="Contact Details" items={items} />;
 };

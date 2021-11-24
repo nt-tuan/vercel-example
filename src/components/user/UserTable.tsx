@@ -1,16 +1,16 @@
-import { User, UserStatus } from "models/user";
+import React from "react";
+import { User } from "models/user";
 import {
   DataGrid,
   GridColDef,
   GridRowParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
-import { UserStatusBadge } from "./UserStatusBadge";
-import { useRouter } from "next/router";
 import { dateColumnFormatter } from "helpers/table";
-const columns: GridColDef[] = [
+import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
+const getColumns: (type: string) => GridColDef[] = (type) => [
   {
-    field: "marketplace",
+    field: "marketplaceName",
     headerName: "Marketplace",
     minWidth: 250,
     sortable: false,
@@ -43,13 +43,22 @@ const columns: GridColDef[] = [
     resizable: false,
   },
   {
-    field: "dateJoined",
+    field: "userJoinedDate",
     headerName: "Date Joined",
     sortable: false,
     filterable: false,
     resizable: false,
     minWidth: 200,
     valueFormatter: dateColumnFormatter,
+  },
+  {
+    field: "type",
+    headerName: "Type",
+    width: 180,
+    sortable: false,
+    filterable: false,
+    resizable: false,
+    renderCell: () => <span>{type}</span>,
   },
   {
     field: "status",
@@ -59,21 +68,27 @@ const columns: GridColDef[] = [
     filterable: false,
     resizable: false,
     renderCell: (params: GridValueGetterParams) =>
-      params.value && (
-        <UserStatusBadge
-          status={
-            UserStatus[params.value.toString() as keyof typeof UserStatus]
-          }
-        />
-      ),
+      params.value && <ColorBadge status={params.value.toString()} />,
   },
 ];
 
-export const UserTable = ({ users }: { users?: User[] }) => {
-  const router = useRouter();
+export const UserTable = ({
+  getUsers,
+  onItemClick,
+  type,
+}: {
+  getUsers: () => Promise<User[]>;
+  onItemClick: (user: User) => void;
+  type: string;
+}) => {
+  const [users, setUsers] = React.useState<User[]>();
+  React.useEffect(() => {
+    getUsers().then(setUsers);
+  }, [getUsers]);
   const handleRowClick = (params: GridRowParams) => {
-    router.push("/user/" + params.row.id);
+    onItemClick(params.row as User);
   };
+  const columns = getColumns(type);
   return (
     <DataGrid
       rows={users ?? []}

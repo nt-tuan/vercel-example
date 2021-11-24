@@ -12,15 +12,21 @@ import {
 } from "@mui/material";
 import { dateTimeColumnFormatter } from "helpers/table";
 import { ColorBadge } from "../ColorBadge/ColorBadge";
-import { VerificationHistory } from "models/verification";
+import { SessionHistory } from "models/session";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface Props {
-  data?: VerificationHistory[];
+  data?: SessionHistory[];
 }
 
 export const VerificationTable = ({ data }: Props) => {
-  const [message, setMessage] = React.useState<string>();
-  const viewMessage = (actionMessage?: string) => {
-    setMessage(actionMessage);
+  const [message, setMessage] =
+    React.useState<{ request: string; response: string }>();
+  const viewMessage = (request: string, response: string) => {
+    setMessage({ request, response });
   };
   const columns: GridColDef[] = [
     {
@@ -73,7 +79,7 @@ export const VerificationTable = ({ data }: Props) => {
         return (
           <IconButton
             title="View message"
-            onClick={() => viewMessage(params.row.message)}
+            onClick={() => viewMessage(params.row.request, params.row.response)}
           >
             <VisibilityIcon />
           </IconButton>
@@ -95,7 +101,32 @@ export const VerificationTable = ({ data }: Props) => {
       />
       <Dialog onClose={closeModal} open={message != null} fullWidth>
         <DialogTitle>KYC request and response </DialogTitle>
-        <DialogContent>{message}</DialogContent>
+        <DialogContent>
+          <Accordion defaultExpanded>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>Request</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{message?.request}</Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography>Response</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{message?.response}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        </DialogContent>
         <DialogActions>
           <Button onClick={closeModal}>
             <strong>Close</strong>
