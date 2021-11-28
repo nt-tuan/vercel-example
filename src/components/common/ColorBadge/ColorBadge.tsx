@@ -20,7 +20,7 @@ const keys = Object.keys(colorMap);
 export const ColorBadge = ({ status, size = "small" }: Props) => {
   const color = React.useMemo(() => {
     for (const key of keys) {
-      if (status.includes(key)) {
+      if (status?.toLowerCase()?.includes(key)) {
         return colorMap[key];
       }
     }
