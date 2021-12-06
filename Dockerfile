@@ -22,7 +22,7 @@ WORKDIR /app
 ENV NODE_ENV production
 ARG BASE_PATH=/core-services/dc-support
 ENV BASE_PATH $BASE_PATH
-ENV PORT 80
+ENV PORT 3000
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
@@ -36,7 +36,7 @@ COPY --from=builder /app/package.json ./package.json
 
 USER nextjs
 
-EXPOSE 80
+EXPOSE 3000
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
