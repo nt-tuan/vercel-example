@@ -55,11 +55,11 @@ export const ContactCard = ({ items, title }: Props) => {
           value=""
           label={<Typography fontWeight="bold">{title}</Typography>}
         />
-        {items.map(({ value, label }) => (
-          <>
+        {items.map(({ value, label }, index) => (
+          <React.Fragment key={index}>
             <Divider variant="fullWidth" component="li" />
             <WrappedItem value={value ?? ""} label={label} />
-          </>
+          </React.Fragment>
         ))}
       </List>
     </Card>

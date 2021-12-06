@@ -3,7 +3,7 @@ import { AdminLayout } from "layouts/AdminLayout";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
 import { useRouter } from "next/router";
-import { VerificationSessionTable } from "components/common/SessionTable/SessionTable";
+import { SessionTable } from "components/common/SessionTable/SessionTable";
 import { Session } from "models/session";
 import { UserContact } from "components/user/UserContact";
 
@@ -40,7 +40,7 @@ export const UserVerificationContainer = ({
       </AdminLayout.Breadcrumbs>
       <UserContact />
       <Box sx={{ marginTop: "24px" }}>
-        <VerificationSessionTable data={sessions} />
+        <SessionTable data={sessions} />
       </Box>
     </>
   );

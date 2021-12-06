@@ -53,7 +53,7 @@ const Row = ({ row }: { row: Session }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.id}
+          {row.sessionNumber}
         </TableCell>
         <TableCell>{row.type}</TableCell>
         <TableCell>{formatDateTime(row.requestedDate)}</TableCell>
@@ -69,7 +69,7 @@ const Row = ({ row }: { row: Session }) => {
 interface Props {
   data?: Session[];
 }
-export const VerificationSessionTable = ({ data }: Props) => {
+export const SessionTable = ({ data }: Props) => {
   if (data == null) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>

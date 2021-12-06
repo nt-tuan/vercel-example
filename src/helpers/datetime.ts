@@ -1,13 +1,13 @@
 import { format, utcToZonedTime } from "date-fns-tz";
 
 const tryFormat = (stringValue: string, pattern: string) => {
+  console.log(pattern);
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   try {
     return format(utcToZonedTime(new Date(stringValue), timeZone), pattern, {
       timeZone,
     });
   } catch (e) {
-    console.log(e);
     return "";
   }
 };
