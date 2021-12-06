@@ -2,7 +2,7 @@ import React from "react";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import { Box, Skeleton } from "@mui/material";
 import { useRouter } from "next/router";
-import { VerificationSessionTable } from "components/common/SessionTable/SessionTable";
+import { SessionTable } from "components/common/SessionTable/SessionTable";
 import { Organization } from "models/organization";
 import {
   getOrganizations,
@@ -29,7 +29,7 @@ const OrganizationPage = () => {
         {organization?.organizationName ?? <Skeleton variant="text" />}
       </AdminLayout.Header>
       <Box sx={{ marginTop: "24px" }}>
-        <VerificationSessionTable data={sessions} />
+        <SessionTable data={sessions} />
       </Box>
     </>
   );

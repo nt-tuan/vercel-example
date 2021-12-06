@@ -6,6 +6,9 @@ module.exports = {
     "**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts",
     "!**/node_modules/**",
+    "!src/theme.ts",
+    "!src/pages/**",
+    "!src/services/**"
   ],
   moduleDirectories: ["node_modules", "src"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
