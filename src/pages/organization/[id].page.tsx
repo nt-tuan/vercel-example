@@ -25,8 +25,13 @@ const OrganizationPage = () => {
   return (
     <>
       <AdminLayout.Header>
-        {organization?.organizationId ?? <Skeleton variant="text" />} |{" "}
-        {organization?.organizationName ?? <Skeleton variant="text" />}
+        {!organization?.organizationId && !organization?.organizationName ? (
+          <Skeleton width={320} variant="text" />
+        ) : (
+          <>
+            {organization?.organizationId} | {organization?.organizationName}
+          </>
+        )}
       </AdminLayout.Header>
       <Box sx={{ marginTop: "24px" }}>
         <SessionTable data={sessions} />
