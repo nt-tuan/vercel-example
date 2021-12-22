@@ -1,13 +1,13 @@
 import React from "react";
 import { User } from "models/user";
 import {
-  DataGrid,
   GridColDef,
   GridRowParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid";
 import { dateColumnFormatter } from "helpers/table";
 import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
+import { DataGrid } from "components/common/DataGrid/DataGrid";
 const getColumns: (type: string) => GridColDef[] = (type) => [
   {
     field: "marketplaceName",
@@ -94,9 +94,6 @@ export const UserTable = ({
       rows={users ?? []}
       columns={columns}
       loading={users == null}
-      hideFooter
-      disableColumnMenu
-      autoHeight
       onRowClick={handleRowClick}
     />
   );

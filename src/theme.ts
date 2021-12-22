@@ -18,6 +18,9 @@ const theme = createTheme({
   components: {
     MuiDataGrid: {
       styleOverrides: {
+        iconSeparator: {
+          display: "none",
+        },
         root: {
           backgroundColor: "#fff",
         },

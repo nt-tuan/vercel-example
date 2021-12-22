@@ -8,7 +8,7 @@ test("VerificationTable should render when empty", () => {
 });
 
 test("VerificationTable should render spin", () => {
-  const { getByText, getByRole } = render(
+  const { getByText, getAllByRole } = render(
     <VerificationTable
       data={[
         {
@@ -24,7 +24,7 @@ test("VerificationTable should render spin", () => {
     />
   );
   expect(getByText("my-provider")).toBeInTheDocument();
-  fireEvent.click(getByRole("button"));
+  fireEvent.click(getAllByRole("button")[0]);
   expect(getByText("my-request")).toBeInTheDocument();
   expect(getByText("my-response")).toBeInTheDocument();
 });

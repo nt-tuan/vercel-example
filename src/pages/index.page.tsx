@@ -9,6 +9,7 @@ import { User } from "models/user";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 
 const filters = [
@@ -77,16 +78,20 @@ const UsersPage = () => {
           direction="row"
           alignItems="center"
           spacing={2}
-          sx={{ marginBottom: "20px" }}
+          sx={{ marginBottom: "20px", flexWrap: "wrap" }}
         >
           <span>Filtered by</span>
           {filters.map((item) => (
-            <Chip
+            <Box
               key={item.name}
-              label={item.name}
-              color={item.name === selected?.name ? "primary" : undefined}
-              onClick={() => setSelected(item)}
-            />
+              sx={{ paddingTop: "4px", paddingBottom: "4px" }}
+            >
+              <Chip
+                label={item.name}
+                color={item.name === selected?.name ? "primary" : undefined}
+                onClick={() => setSelected(item)}
+              />
+            </Box>
           ))}
         </Stack>
         <UserTable

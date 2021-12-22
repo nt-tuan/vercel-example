@@ -1,6 +1,5 @@
 import { Organization } from "models/organization";
 import {
-  DataGrid,
   GridColDef,
   GridRowParams,
   GridValueGetterParams,
@@ -8,6 +7,7 @@ import {
 import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
 import { useRouter } from "next/router";
 import { dateColumnFormatter } from "helpers/table";
+import { DataGrid } from "components/common/DataGrid/DataGrid";
 const columns: GridColDef[] = [
   {
     field: "organizationId",
@@ -63,9 +63,6 @@ export const OrganizationTable = ({
       rows={organizations ?? []}
       columns={columns}
       loading={organizations == null}
-      hideFooter
-      disableColumnMenu
-      autoHeight
       onRowClick={handleRowClick}
     />
   );

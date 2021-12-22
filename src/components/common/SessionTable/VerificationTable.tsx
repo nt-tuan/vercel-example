@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import {
   Dialog,
@@ -18,6 +18,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { DataGrid } from "components/common/DataGrid/DataGrid";
 interface Props {
   data?: SessionHistory[];
 }
@@ -95,9 +96,6 @@ export const VerificationTable = ({ data }: Props) => {
         columns={columns}
         columnBuffer={columns.length}
         loading={data == null}
-        hideFooter
-        disableColumnMenu
-        autoHeight
       />
       <Dialog onClose={closeModal} open={message != null} fullWidth>
         <DialogTitle>KYC request and response </DialogTitle>

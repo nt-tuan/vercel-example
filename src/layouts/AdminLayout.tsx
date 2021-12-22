@@ -14,8 +14,9 @@ import { NextPage } from "next";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import { SideMenu } from "./SideMenu";
+import useMediaQuery from "@mui/material/useMediaQuery";
 const drawerWidth = 240;
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -48,7 +49,15 @@ interface Props {
 }
 
 export const AdminLayout = (props: Props) => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState<boolean | null>(null);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+  const showMenu = React.useMemo(() => {
+    if (open == null) {
+      return matches;
+    }
+    return open;
+  }, [matches, open]);
   const toggleDrawer = () => {
     setOpen((op) => !op);
   };
@@ -85,7 +94,7 @@ export const AdminLayout = (props: Props) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={showMenu}>
         <Toolbar
           sx={{
             display: "flex",
@@ -106,17 +115,26 @@ export const AdminLayout = (props: Props) => {
       <Box
         component="main"
         sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
+          backgroundColor: (currentTheme) =>
+            currentTheme.palette.mode === "light"
+              ? currentTheme.palette.grey[100]
+              : currentTheme.palette.grey[900],
           flexGrow: 1,
           height: "100vh",
           overflow: "auto",
         }}
       >
         <Toolbar />
-        <Box sx={{ padding: "24px 32px" }}>{props.children}</Box>
+        <Box
+          sx={{
+            padding: {
+              xs: "24px 8px",
+              lg: "24px 32px",
+            },
+          }}
+        >
+          {props.children}
+        </Box>
       </Box>
     </Box>
   );
