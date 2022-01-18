@@ -3,13 +3,13 @@ import { User } from "models/user";
 import { api } from "./api";
 
 export const getUsersKYC: () => Promise<User[]> = async () => {
-  return api.get<User[]>("/users/kyc");
+  return api.get<User[]>("/users/kyc/all");
 };
 export const getUsersEmailVerification = () => {
-  return api.get<User[]>("/users/email-verification");
+  return api.get<User[]>("/users/email-verification/all");
 };
 export const getUserDocumentVerification = () => {
-  return api.get<User[]>("/users/document-verification");
+  return api.get<User[]>("/users/document-verification/all");
 };
 export const getUserKYCVerificationHistory = (id: string) =>
   api.get<Session[]>(`/users/kyc/${id}`);

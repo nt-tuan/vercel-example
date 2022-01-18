@@ -61,7 +61,9 @@ const Row = ({ row }: { row: Session }) => {
           <ColorBadge status={row.status} />
         </TableCell>
       </TableRow>
-      {open && <VerificationHistoryRow historySessions={row.historyList} />}
+      {open && row.historyList && (
+        <VerificationHistoryRow historySessions={row.historyList} />
+      )}
     </>
   );
 };

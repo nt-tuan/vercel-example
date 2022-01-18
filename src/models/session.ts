@@ -14,5 +14,5 @@ export interface Session {
   type: string;
   requestedDate: string;
   status: string;
-  historyList: SessionHistory[];
+  historyList?: SessionHistory[];
 }
