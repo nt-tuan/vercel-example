@@ -1,9 +1,10 @@
 import React from "react";
 import { getLayout } from "layouts/AdminLayout";
-import { getUserEmailVerificationHistory } from "services/user";
+import { useUsers } from "services/user";
 import { UserVerificationContainer } from "components/user/UserVerificationContainer";
 
 const Page = () => {
+  const { getUserEmailVerificationHistory } = useUsers();
   return (
     <UserVerificationContainer getSessions={getUserEmailVerificationHistory} />
   );

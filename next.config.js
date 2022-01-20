@@ -19,5 +19,6 @@ module.exports = {
   basePath: getBasePath(),
   publicRuntimeConfig: {
     basePath: getBasePath(),
+    apiURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
   },
 };

@@ -6,3 +6,4 @@ services:
       - 3000:3000
     environment:
       - BASE_PATH=/core-services/dc-support
+      - NEXT_PUBLIC_API_ENDPOINT=https://distichain.dev/core-services/dc-verify
