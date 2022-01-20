@@ -1,10 +1,6 @@
 import React from "react";
 import { UserTable } from "components/user/UserTable";
-import {
-  getUserDocumentVerification,
-  getUsersEmailVerification,
-  getUsersKYC,
-} from "services/user";
+import { useUsers } from "services/user";
 import { User } from "models/user";
 import { AdminLayout, getLayout } from "layouts/AdminLayout";
 import Chip from "@mui/material/Chip";
@@ -12,24 +8,29 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 
-const filters = [
-  {
-    name: "KYC",
-    detailPrefix: "/user/kyc",
-    getUsers: getUsersKYC,
-  },
-  {
-    name: "Email Verification",
-    detailPrefix: "/user/email-verification",
-    getUsers: getUsersEmailVerification,
-  },
-  {
-    name: "Document Verification",
-    detailPrefix: "/user/document-verification",
-    getUsers: getUserDocumentVerification,
-  },
-];
 const UsersPage = () => {
+  const {
+    getUsersKYC,
+    getUsersEmailVerification,
+    getUserDocumentVerification,
+  } = useUsers();
+  const filters = [
+    {
+      name: "KYC",
+      detailPrefix: "/user/kyc",
+      getUsers: getUsersKYC,
+    },
+    {
+      name: "Email Verification",
+      detailPrefix: "/user/email-verification",
+      getUsers: getUsersEmailVerification,
+    },
+    {
+      name: "Document Verification",
+      detailPrefix: "/user/document-verification",
+      getUsers: getUserDocumentVerification,
+    },
+  ];
   const [selected, setSelected] = React.useState<{
     name: string;
     detailPrefix: string;

@@ -4,13 +4,11 @@ import { Box, Skeleton } from "@mui/material";
 import { useRouter } from "next/router";
 import { SessionTable } from "components/common/SessionTable/SessionTable";
 import { Organization } from "models/organization";
-import {
-  getOrganizations,
-  getOrganizationHistory,
-} from "services/organization";
+import { useOrganisations } from "services/organization";
 import { Session } from "models/session";
 
 const OrganizationPage = () => {
+  const { getOrganizations, getOrganizationHistory } = useOrganisations();
   const [organizations, setOrganizations] = React.useState<Organization[]>();
   const [sessions, setSessions] = React.useState<Session[]>();
   const router = useRouter();

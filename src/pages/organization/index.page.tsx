@@ -1,9 +1,10 @@
 import React from "react";
-import { getOrganizations } from "services/organization";
+import { useOrganisations } from "services/organization";
 import { Organization } from "models/organization";
 import { OrganizationTable } from "components/organization/OrganizationTable";
 import { getLayout } from "layouts/AdminLayout";
 const OrganizationPages = () => {
+  const { getOrganizations } = useOrganisations();
   const [data, setData] = React.useState<Organization[]>();
   React.useEffect(() => {
     let subscription = true;
