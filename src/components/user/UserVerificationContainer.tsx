@@ -4,7 +4,6 @@ import { Box, Skeleton, Typography } from "@mui/material";
 import { WrappedLink } from "components/common/WrappedLink/WrappedLink";
 import { useRouter } from "next/router";
 import { SessionTable } from "components/common/SessionTable/SessionTable";
-import { Session } from "models/session";
 import { UserContact } from "components/user/UserContact";
 import { UserVerificationHistory } from "services/user";
 
