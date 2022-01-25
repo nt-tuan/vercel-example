@@ -7,7 +7,7 @@ export const useOrganisations = () => {
   const apiURL = useApiURL();
   const api = new HttpAPI(apiURL);
   const getOrganizations: () => Promise<Organization[]> = async () => {
-    return api.get<Organization[]>("/organizations/all");
+    return api.get<Organization[]>("/organizations");
   };
   const getOrganizationHistory: (id: string) => Promise<Session[]> = async (
     id

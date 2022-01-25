@@ -7,13 +7,13 @@ export const useUsers = () => {
   const apiURL = useApiURL();
   const api = new HttpAPI(apiURL);
   const getUsersKYC: () => Promise<User[]> = async () => {
-    return api.get<User[]>("/users/kyc/all");
+    return api.get<User[]>("/users/kyc");
   };
   const getUsersEmailVerification = () => {
-    return api.get<User[]>("/users/email-verification/all");
+    return api.get<User[]>("/users/email-verification");
   };
   const getUserDocumentVerification = () => {
-    return api.get<User[]>("/users/document-verification/all");
+    return api.get<User[]>("/users/document-verification");
   };
   const getUserKYCVerificationHistory = (id: string) =>
     api.get<Session[]>(`/users/kyc/${id}`);
