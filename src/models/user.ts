@@ -1,3 +1,5 @@
+import {Session} from "./session";
+
 export interface User {
   id: string;
   marketplaceName: string;
@@ -12,4 +14,5 @@ export interface User {
   role: string;
   userJoinedDate: string;
   status: string;
+  sessionList?: Session[];
 }

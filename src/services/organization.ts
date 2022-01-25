@@ -7,12 +7,12 @@ export const useOrganisations = () => {
   const apiURL = useApiURL();
   const api = new HttpAPI(apiURL);
   const getOrganizations: () => Promise<Organization[]> = async () => {
-    return api.get<Organization[]>("/organizations/all");
+    return api.get<Organization[]>("/organizations");
   };
-  const getOrganizationHistory: (id: string) => Promise<Session[]> = async (
+  const getOrganizationHistory: (id: string) => Promise<Organization> = async (
     id
   ) => {
-    return api.get<Session[]>(`/organizations/${id}`);
+    return api.get<Organization>(`/organizations/${id}`);
   };
   return { getOrganizations, getOrganizationHistory };
 };
