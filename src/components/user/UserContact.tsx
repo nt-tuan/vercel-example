@@ -30,12 +30,7 @@ export const UserContact = ({ user }: { user: User }) => {
       },
       {
         label: "Email Address",
-        value: (
-          <div>
-            <div>{email}</div>
-            {status && <ColorBadge status={tryString(status)} size="small" />}
-          </div>
-        ),
+        value: email,
       },
       {
         label: "Company Name",
