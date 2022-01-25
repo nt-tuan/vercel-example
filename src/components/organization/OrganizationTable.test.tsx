@@ -26,7 +26,7 @@ test("OrganizationTable should work", () => {
       ]}
     />
   );
-  expect(getByText("my-id")).toBeInTheDocument();
-  fireEvent.click(getByText("my-id"));
+  expect(getByText("mp-name")).toBeInTheDocument();
+  fireEvent.click(getByText("mp-name"));
   expect(historyPush).toBeCalled();
 });

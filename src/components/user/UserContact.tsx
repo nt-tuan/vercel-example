@@ -1,10 +1,9 @@
 import React from "react";
 import { ContactCard } from "components/common/ContactCard/ContactCard";
 import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
-import { useRouter } from "next/router";
+import { User } from "models/user";
 
-export const UserContact = () => {
-  const router = useRouter();
+export const UserContact = ({ user }: { user: User }) => {
   const {
     firstName,
     lastName,
@@ -13,7 +12,7 @@ export const UserContact = () => {
     status,
     organizationName,
     country,
-  } = router.query;
+  } = user || {};
   const tryString = (value: string | string[] | undefined) => {
     if (typeof value === "string") return value;
     if (Array.isArray(value)) return value[0];

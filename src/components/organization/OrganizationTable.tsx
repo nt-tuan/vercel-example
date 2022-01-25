@@ -10,7 +10,7 @@ import { dateColumnFormatter } from "helpers/table";
 import { DataGrid } from "components/common/DataGrid/DataGrid";
 const columns: GridColDef[] = [
   {
-    field: "organizationId",
+    field: "marketplaceName",
     headerName: "Marketplace",
     minWidth: 250,
     sortable: false,

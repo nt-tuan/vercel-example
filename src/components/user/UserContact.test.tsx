@@ -13,7 +13,25 @@ test("UserContact should work", () => {
       country: "my-country",
     },
   } as never);
-  const { getByText } = render(<UserContact />);
+  const { getByText } = render(
+    <UserContact
+      user={{
+        id: "my-id",
+        firstName: "my-first-name",
+        lastName: "my-last-name",
+        phone: "my-phone",
+        status: "my-status",
+        organizationName: "my-org-name",
+        country: "my-country",
+        marketplaceName: "string",
+        userId: "string",
+        username: "",
+        email: "string",
+        role: "string",
+        userJoinedDate: "string",
+      }}
+    />
+  );
   const expectLines = [
     "my-first-name my-last-name",
     "my-phone",
