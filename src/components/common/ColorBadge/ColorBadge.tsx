@@ -15,6 +15,7 @@ const colorMap: {
   verified: "success",
   inactive: "default",
   pass: "success",
+  active: "info",
 };
 const keys = Object.keys(colorMap);
 export const ColorBadge = ({ status, size = "small" }: Props) => {

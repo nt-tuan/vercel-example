@@ -6,26 +6,47 @@ import { useRouter } from "next/router";
 import { SessionTable } from "components/common/SessionTable/SessionTable";
 import { Session } from "models/session";
 import { UserContact } from "components/user/UserContact";
+import { UserVerificationHistory } from "services/user";
 
 export const UserVerificationContainer = ({
   getSessions,
 }: {
-  getSessions: (id: string) => Promise<Session[]>;
+  getSessions: (id: string) => Promise<UserVerificationHistory>;
 }) => {
-  const [sessions, setSessions] = React.useState<Session[]>();
+  const [userVerificationHistory, setUserVerificationHistory] =
+    React.useState<UserVerificationHistory>();
   const router = useRouter();
-  const { id, username, marketplaceName } = router.query;
+  const { id } = router.query;
+
+  const getUsername = () => {
+    if (userVerificationHistory == null) return null;
+    if (userVerificationHistory.username)
+      return userVerificationHistory.username;
+    return `${userVerificationHistory.firstName} ${userVerificationHistory.lastName}`;
+  };
+  const username = getUsername();
 
   React.useEffect(() => {
     if (typeof id !== "string") return;
-    getSessions(id).then(setSessions);
+    getSessions(id).then(setUserVerificationHistory);
   }, [id]);
 
   return (
     <>
       <AdminLayout.Header>
-        {marketplaceName ?? <Skeleton variant="text" />} |{" "}
-        {username ?? <Skeleton variant="text" />}
+        {userVerificationHistory?.marketplaceName ?? (
+          <Skeleton
+            sx={{ display: "inline-block", width: 300 }}
+            variant="text"
+          />
+        )}{" "}
+        |{" "}
+        {username ?? (
+          <Skeleton
+            sx={{ display: "inline-block", width: 300 }}
+            variant="text"
+          />
+        )}
       </AdminLayout.Header>
       <AdminLayout.Breadcrumbs aria-label="breadcrumb">
         <WrappedLink
@@ -38,9 +59,11 @@ export const UserVerificationContainer = ({
         </WrappedLink>
         <Typography fontWeight="light">User Details</Typography>
       </AdminLayout.Breadcrumbs>
-      <UserContact />
+      {userVerificationHistory && (
+        <UserContact user={userVerificationHistory} />
+      )}
       <Box sx={{ marginTop: "24px" }}>
-        <SessionTable data={sessions} />
+        <SessionTable data={userVerificationHistory?.sessionList} />
       </Box>
     </>
   );

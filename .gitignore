@@ -30,3 +30,5 @@ yarn-error.log*
 /.next/
 /out/
 dc-support-frontend.iml
+.yarn
+.yarnrc.yml

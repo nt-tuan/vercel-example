@@ -30,7 +30,7 @@ const WrappedItem = ({
       <Box sx={{ width: "100%", padding: "10px 24px" }}>
         <Flex>
           <FlexItem>{label}</FlexItem>
-          <FlexItem>{value}</FlexItem>
+          <FlexItem>{value ?? ""}</FlexItem>
         </Flex>
       </Box>
     </ListItem>

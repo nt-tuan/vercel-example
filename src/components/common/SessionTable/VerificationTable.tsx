@@ -51,7 +51,7 @@ export const VerificationTable = ({ data }: Props) => {
       resizable: false,
     },
     {
-      field: "date",
+      field: "createdDate",
       headerName: "Date",
       sortable: false,
       filterable: false,

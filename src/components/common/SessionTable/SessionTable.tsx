@@ -53,7 +53,7 @@ const Row = ({ row }: { row: Session }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.sessionNumber}
+          {row.sessionNumber ?? row.id}
         </TableCell>
         <TableCell>{row.type}</TableCell>
         <TableCell>{formatDateTime(row.requestedDate)}</TableCell>

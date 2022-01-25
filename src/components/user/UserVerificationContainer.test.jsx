@@ -20,6 +20,8 @@ jest.mock("next/router", () => ({
 }));
 
 test("UserVerificationContainer should work", () => {
-  const { getByText } = render(<UserVerificationContainer />);
-  expect(getByText("my-mp | my-username")).toBeInTheDocument();
+  const { getByText } = render(
+    <UserVerificationContainer getSessions={async () => ({})} />
+  );
+  expect(getByText("my-session-table")).toBeInTheDocument();
 });
