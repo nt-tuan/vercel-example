@@ -17,7 +17,7 @@ test("VerificationTable should render spin", () => {
           createdDate: "my-created-date",
           status: "my-status",
           request: "my-request",
-          response: "my-response",
+          result: "my-response",
           provider: "my-provider",
         },
       ]}
