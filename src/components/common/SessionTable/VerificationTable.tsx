@@ -25,9 +25,9 @@ interface Props {
 
 export const VerificationTable = ({ data }: Props) => {
   const [message, setMessage] =
-    React.useState<{ request: string; response: string }>();
-  const viewMessage = (request: string, response: string) => {
-    setMessage({ request, response });
+    React.useState<{ request: string; result: string }>();
+  const viewMessage = (request: string, result: string) => {
+    setMessage({ request, result });
   };
   const columns: GridColDef[] = [
     {
@@ -80,7 +80,7 @@ export const VerificationTable = ({ data }: Props) => {
         return (
           <IconButton
             title="View message"
-            onClick={() => viewMessage(params.row.request, params.row.response)}
+            onClick={() => viewMessage(params.row.request, params.row.result)}
           >
             <VisibilityIcon />
           </IconButton>
@@ -109,7 +109,9 @@ export const VerificationTable = ({ data }: Props) => {
               <Typography>Request</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{message?.request}</Typography>
+              <Typography sx={{ wordBreak: "break-all" }}>
+                {message?.request}
+              </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion>
@@ -118,10 +120,10 @@ export const VerificationTable = ({ data }: Props) => {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Response</Typography>
+              <Typography sx={{ wordBreak: "break-all" }}>Response</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{message?.response}</Typography>
+              <Typography>{message?.result}</Typography>
             </AccordionDetails>
           </Accordion>
         </DialogContent>
