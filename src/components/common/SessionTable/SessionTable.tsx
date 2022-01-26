@@ -57,9 +57,6 @@ const Row = ({ row }: { row: Session }) => {
         </TableCell>
         <TableCell>{row.type}</TableCell>
         <TableCell>{formatDateTime(row.requestedDate)}</TableCell>
-        <TableCell>
-          <ColorBadge status={row.status} />
-        </TableCell>
       </TableRow>
       {open && row.historyList && (
         <VerificationHistoryRow historySessions={row.historyList} />
@@ -89,7 +86,6 @@ export const SessionTable = ({ data }: Props) => {
             <TableCell>Session ID</TableCell>
             <TableCell>Type</TableCell>
             <TableCell>Requested</TableCell>
-            <TableCell>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
