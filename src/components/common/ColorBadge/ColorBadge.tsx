@@ -6,7 +6,13 @@ interface Props {
   size?: "small" | "medium";
 }
 const colorMap: {
-  [key: string]: "error" | "warning" | "info" | "success" | "default";
+  [key: string]:
+    | "error"
+    | "warning"
+    | "info"
+    | "success"
+    | "default"
+    | "primary";
 } = {
   fail: "error",
   progress: "info",
@@ -14,7 +20,7 @@ const colorMap: {
   success: "success",
   verified: "success",
   inactive: "default",
-  pass: "success",
+  pass: "primary",
   active: "info",
 };
 const keys = Object.keys(colorMap);

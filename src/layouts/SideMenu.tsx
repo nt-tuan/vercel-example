@@ -1,9 +1,4 @@
-import {
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";

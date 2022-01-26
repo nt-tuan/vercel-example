@@ -5,7 +5,7 @@ export interface SessionHistory {
   createdDate: string;
   status: string;
   request: string;
-  result: string;
+  response: string;
 }
 
 export interface Session {

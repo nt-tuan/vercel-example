@@ -1,7 +1,4 @@
 import { InvalidFormatError, UnexpectedError, getAPIError } from "./apiError";
-interface ServerError {
-  code: string;
-}
 export class HttpAPI {
   basePath: string;
   constructor(basePath?: string) {
@@ -15,11 +12,7 @@ export class HttpAPI {
         headers,
       });
       if (!response.ok) {
-        const errorData = await parseJSONResponse<ServerError>(
-          response,
-          UnexpectedError
-        );
-        throw getAPIError(errorData.code);
+        throw getAPIError();
       }
       return parseJSONResponse<T>(response);
     } catch {

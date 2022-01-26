@@ -1,5 +1,5 @@
-import { DataGrid as MUIDataGrid } from "@mui/x-data-grid";
+import { DataGrid as MUIDataGrid, DataGridProps } from "@mui/x-data-grid";
 
-export const DataGrid = (props: any) => {
+export const DataGrid = (props: DataGridProps) => {
   return <MUIDataGrid disableColumnMenu autoHeight {...props} />;
 };

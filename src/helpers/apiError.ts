@@ -13,6 +13,6 @@ export const UnexpectedError: APIError = {
   name: "UnexpectedError",
 };
 
-export const getAPIError = (code: string) => {
+export const getAPIError = () => {
   return UnexpectedError;
 };
