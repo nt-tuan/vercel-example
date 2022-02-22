@@ -9,8 +9,10 @@ import { UserVerificationHistory } from "services/user";
 
 export const UserVerificationContainer = ({
   getSessions,
+  type,
 }: {
   getSessions: (id: string) => Promise<UserVerificationHistory>;
+  type: string;
 }) => {
   const [userVerificationHistory, setUserVerificationHistory] =
     React.useState<UserVerificationHistory>();
@@ -62,7 +64,7 @@ export const UserVerificationContainer = ({
         <UserContact user={userVerificationHistory} />
       )}
       <Box sx={{ marginTop: "24px" }}>
-        <SessionTable data={userVerificationHistory?.sessionList} />
+        <SessionTable data={userVerificationHistory?.sessionList} type={type} />
       </Box>
     </>
   );

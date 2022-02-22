@@ -1,10 +1,5 @@
 import { Organization } from "models/organization";
-import {
-  GridColDef,
-  GridRowParams,
-  GridValueGetterParams,
-} from "@mui/x-data-grid";
-import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
+import { GridColDef, GridRowParams } from "@mui/x-data-grid";
 import { useRouter } from "next/router";
 import { dateColumnFormatter } from "helpers/table";
 import { DataGrid } from "components/common/DataGrid/DataGrid";
@@ -34,18 +29,6 @@ const columns: GridColDef[] = [
     resizable: false,
     minWidth: 200,
     valueFormatter: dateColumnFormatter,
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 180,
-    sortable: false,
-    filterable: false,
-    resizable: false,
-    renderCell: (params: GridValueGetterParams) =>
-      params.value && (
-        <ColorBadge status={params.value as string} size="medium" />
-      ),
   },
 ];
 

@@ -143,7 +143,7 @@ export const AdminLayout = (props: Props) => {
 // eslint-disable-next-line react/display-name
 AdminLayout.Header = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Typography variant="h4" component="h2">
+    <Typography component="div" variant="h4">
       {children}
     </Typography>
   );

@@ -1,12 +1,7 @@
 import React from "react";
 import { User } from "models/user";
-import {
-  GridColDef,
-  GridRowParams,
-  GridValueGetterParams,
-} from "@mui/x-data-grid";
+import { GridColDef, GridRowParams } from "@mui/x-data-grid";
 import { dateColumnFormatter } from "helpers/table";
-import { ColorBadge } from "components/common/ColorBadge/ColorBadge";
 import { DataGrid } from "components/common/DataGrid/DataGrid";
 const getColumns: (type: string) => GridColDef[] = (type) => [
   {
@@ -42,16 +37,6 @@ const getColumns: (type: string) => GridColDef[] = (type) => [
     filterable: false,
     resizable: false,
     renderCell: () => <span>{type}</span>,
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 180,
-    sortable: false,
-    filterable: false,
-    resizable: false,
-    renderCell: (params: GridValueGetterParams) =>
-      params.value && <ColorBadge status={params.value.toString()} />,
   },
 ];
 

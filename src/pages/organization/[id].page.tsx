@@ -27,7 +27,7 @@ const OrganizationPage = () => {
         )}
       </AdminLayout.Header>
       <Box sx={{ marginTop: "24px" }}>
-        <SessionTable data={organizationVerification?.sessionList} />
+        <SessionTable type="KYB" data={organizationVerification?.sessionList} />
       </Box>
     </>
   );
