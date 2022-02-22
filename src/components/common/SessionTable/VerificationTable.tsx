@@ -19,11 +19,13 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DataGrid } from "components/common/DataGrid/DataGrid";
+import { useSessionTableContext } from "./SessionTable";
 interface Props {
   data?: SessionHistory[];
 }
 
 export const VerificationTable = ({ data }: Props) => {
+  const { type } = useSessionTableContext();
   const [message, setMessage] =
     React.useState<{ request: string; result: string }>();
   const viewMessage = (request: string, result: string) => {
@@ -80,7 +82,7 @@ export const VerificationTable = ({ data }: Props) => {
         return (
           <IconButton
             title="View message"
-            onClick={() => viewMessage(params.row.request, params.row.resposne)}
+            onClick={() => viewMessage(params.row.request, params.row.result)}
           >
             <VisibilityIcon />
           </IconButton>
@@ -98,7 +100,7 @@ export const VerificationTable = ({ data }: Props) => {
         loading={data == null}
       />
       <Dialog onClose={closeModal} open={message != null} fullWidth>
-        <DialogTitle>KYC request and response </DialogTitle>
+        <DialogTitle>{type} request and response</DialogTitle>
         <DialogContent>
           <Accordion defaultExpanded>
             <AccordionSummary

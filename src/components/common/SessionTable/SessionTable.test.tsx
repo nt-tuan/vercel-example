@@ -5,7 +5,7 @@ import * as mockedDateTime from "helpers/datetime";
 import * as mockedVerificationTable from "./VerificationTable";
 
 test("SessionTable should work render spin", () => {
-  const { getByRole } = render(<SessionTable />);
+  const { getByRole } = render(<SessionTable type="my-type" />);
   expect(getByRole("progressbar")).toBeInTheDocument();
 });
 
@@ -18,6 +18,7 @@ test("SessionTable should render data", () => {
     .mockReturnValue(<div>my-verification-table</div>);
   const { getByText, getByRole } = render(
     <SessionTable
+      type="my-type"
       data={[
         {
           id: "my-id",
@@ -33,7 +34,7 @@ test("SessionTable should render data", () => {
               createdDate: "2021/01/03",
               status: "my-history-status",
               request: "my-request",
-              response: "my-response",
+              result: "my-response",
             },
           ],
         },
@@ -46,12 +47,7 @@ test("SessionTable should render data", () => {
       expect(getByText(item)).toBeInTheDocument();
     }
   };
-  expectLinesInDocument([
-    "my-number",
-    "my-type",
-    "formatted_date",
-    "my-status",
-  ]);
+  expectLinesInDocument(["my-number", "my-type", "formatted_date"]);
 
   fireEvent.click(getByRole("button"));
   expectLinesInDocument(["Verification History", "my-verification-table"]);

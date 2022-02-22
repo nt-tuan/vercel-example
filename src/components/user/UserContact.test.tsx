@@ -35,7 +35,6 @@ test("UserContact should work", () => {
   const expectLines = [
     "my-first-name my-last-name",
     "my-phone",
-    "my-status",
     "my-org-name",
     "my-country",
   ];

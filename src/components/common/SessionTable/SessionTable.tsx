@@ -16,7 +16,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { formatDateTime } from "helpers/datetime";
 import { VerificationTable } from "./VerificationTable";
-import { ColorBadge } from "../ColorBadge/ColorBadge";
 import { Session, SessionHistory } from "models/session";
 
 const VerificationHistoryRow = ({
@@ -65,10 +64,17 @@ const Row = ({ row }: { row: Session }) => {
   );
 };
 
+const SessionTableContext = React.createContext<{ type: string }>({ type: "" });
+
+export const useSessionTableContext = () => {
+  return React.useContext(SessionTableContext);
+};
+
 interface Props {
   data?: Session[];
+  type: string;
 }
-export const SessionTable = ({ data }: Props) => {
+export const SessionTable = ({ data, type }: Props) => {
   if (data == null) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -78,20 +84,22 @@ export const SessionTable = ({ data }: Props) => {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Session ID</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Requested</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data && data.map((row) => <Row key={row.id} row={row} />)}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <SessionTableContext.Provider value={{ type }}>
+      <TableContainer component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>Session ID</TableCell>
+              <TableCell>Type</TableCell>
+              <TableCell>Requested</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data && data.map((row) => <Row key={row.id} row={row} />)}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </SessionTableContext.Provider>
   );
 };

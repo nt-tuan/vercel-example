@@ -6,7 +6,10 @@ import { UserVerificationContainer } from "components/user/UserVerificationConta
 const Page = () => {
   const { getUserKYCVerificationHistory } = useUsers();
   return (
-    <UserVerificationContainer getSessions={getUserKYCVerificationHistory} />
+    <UserVerificationContainer
+      type="KYC"
+      getSessions={getUserKYCVerificationHistory}
+    />
   );
 };
 

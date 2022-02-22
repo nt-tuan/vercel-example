@@ -8,6 +8,7 @@ const Page = () => {
   return (
     <UserVerificationContainer
       getSessions={getUserDocumentVerificationHistory}
+      type="Document"
     />
   );
 };
