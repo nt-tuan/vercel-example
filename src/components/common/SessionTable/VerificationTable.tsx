@@ -82,7 +82,7 @@ export const VerificationTable = ({ data }: Props) => {
         return (
           <IconButton
             title="View message"
-            onClick={() => viewMessage(params.row.request, params.row.result)}
+            onClick={() => viewMessage(params.row.request, params.row.response)}
           >
             <VisibilityIcon />
           </IconButton>

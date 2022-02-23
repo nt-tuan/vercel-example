@@ -24,7 +24,7 @@ test("VerificationTable should render requests and responses", () => {
           createdDate: "my-created-date",
           status: "my-status",
           request: "my-request",
-          result: "my-response",
+          response: "my-response",
           provider: "my-provider",
         },
       ]}

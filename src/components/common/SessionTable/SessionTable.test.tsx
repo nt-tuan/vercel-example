@@ -34,7 +34,7 @@ test("SessionTable should render data", () => {
               createdDate: "2021/01/03",
               status: "my-history-status",
               request: "my-request",
-              result: "my-response",
+              response: "my-response",
             },
           ],
         },
