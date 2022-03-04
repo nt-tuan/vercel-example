@@ -26,56 +26,56 @@ jobs:
         with:
           node-version: "14"
           cache: "yarn"
-      - run: yarn
-      - run: yarn test --coverage
-      - run: sed -i "s|$PWD|.|g" ./coverage/lcov.info
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - run: echo "I will install and build then test"
+      # - run: yarn test --coverage
+      # - run: sed -i "s|$PWD|.|g" ./coverage/lcov.info
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  setup-build-publish:
-    name: Setup, Build and Publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-          # Build the Docker image
+  # setup-build-publish:
+  #   name: Setup, Build and Publish
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+  #         # Build the Docker image
 
-      - uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
-          service_account_key: ${{ secrets.GKE_SA_KEY }}
-          project_id: ${{ secrets.GKE_PROJECT }}
+  #     - uses: google-github-actions/setup-gcloud@v0.2.0
+  #       with:
+  #         service_account_key: ${{ secrets.GKE_SA_KEY }}
+  #         project_id: ${{ secrets.GKE_PROJECT }}
 
-      - run: |-
-          gcloud --quiet auth configure-docker europe-west3-docker.pkg.dev
+  #     - run: |-
+  #         gcloud --quiet auth configure-docker europe-west3-docker.pkg.dev
 
-      - name: Build docker image
-        run: |-
-          docker build -f Dockerfile . \
-          --tag "europe-west3-docker.pkg.dev/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
-          --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" \
+  #     - name: Build docker image
+  #       run: |-
+  #         docker build -f Dockerfile . \
+  #         --tag "europe-west3-docker.pkg.dev/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
+  #         --build-arg GITHUB_SHA="$GITHUB_SHA" \
+  #         --build-arg GITHUB_REF="$GITHUB_REF" \
 
-      - name: Publish docker image
-        if: ${{ github.event_name == 'push'}}
-        run: docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+  #     - name: Publish docker image
+  #       if: ${{ github.event_name == 'push'}}
+  #       run: docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
 
-      - name: dispatch update-manifest
-        if: ${{ github.event_name == 'push'}}
-        uses: Stockopedia/action-octommit@v1
-        with:
-          github-token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          script: |
-            octommit.update()
-                .org("Distichain")
-                .repository("env-core-services")
-                .sourceBranch("main")
-                .outputBranch("main")
-                .sourcePath("services/dc-support/dev-values.yaml")
-                .outputPath("services/dc-support/dev-values.yaml")
-                .set("frontend:image:tag", process.env.GITHUB_SHA)
-                .commit("Auto - dcSupportFrontend deployment")
-                .run();
+  #     - name: dispatch update-manifest
+  #       if: ${{ github.event_name == 'push'}}
+  #       uses: Stockopedia/action-octommit@v1
+  #       with:
+  #         github-token: ${{ secrets.REPO_ACCESS_TOKEN }}
+  #         script: |
+  #           octommit.update()
+  #               .org("Distichain")
+  #               .repository("env-core-services")
+  #               .sourceBranch("main")
+  #               .outputBranch("main")
+  #               .sourcePath("services/dc-support/dev-values.yaml")
+  #               .outputPath("services/dc-support/dev-values.yaml")
+  #               .set("frontend:image:tag", process.env.GITHUB_SHA)
+  #               .commit("Auto - dcSupportFrontend deployment")
+  #               .run();
